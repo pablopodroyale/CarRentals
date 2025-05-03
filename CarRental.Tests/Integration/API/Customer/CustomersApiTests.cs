@@ -19,6 +19,12 @@ namespace CarRental.Tests.Integration.API.Customer
         [Test]
         public async Task Should_RegisterCustomer_ThroughApi()
         {
+            var factory = new CustomWebApplicationFactory();
+            var client = factory.CreateAuthenticatedClient();
+
+            // 🔐 Autenticación
+            //await TestAuthHelper.AuthenticateAsync(client, factory.Services);
+
             // Arrange
             var request = new
             {
@@ -32,7 +38,7 @@ namespace CarRental.Tests.Integration.API.Customer
                 "application/json");
 
             // Act
-            var response = await _client.PostAsync("/api/customers", content);
+            var response = await client.PostAsync("/api/customers", content);
 
             // Assert
             response.EnsureSuccessStatusCode();

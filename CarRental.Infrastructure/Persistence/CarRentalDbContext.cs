@@ -1,10 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using CarRental.Domain.Entities;
 using CarRental.Domain;
+using Microsoft.AspNetCore.Identity;
+using CarRental.Infrastructure.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace CarRental.Infrastructure.Persistence
 {
-    public class CarRentalDbContext : DbContext
+    public class CarRentalDbContext : IdentityDbContext<ApplicationUser>
     {
         public CarRentalDbContext(DbContextOptions<CarRentalDbContext> options)
             : base(options) { }

@@ -1,7 +1,9 @@
 ﻿using CarRental.Application.UseCases.Customers.Commands.RegisterCustomer;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class CustomersController : ControllerBase

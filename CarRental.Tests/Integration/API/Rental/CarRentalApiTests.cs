@@ -40,7 +40,7 @@ namespace CarRental.Tests.Integration.API.Rental
                 }
             };
 
-            var client = factory.CreateClient();
+            var client = factory.CreateAuthenticatedClient();
 
             var command = new
             {
@@ -91,7 +91,7 @@ namespace CarRental.Tests.Integration.API.Rental
                 }
             };
 
-            var client = factory.CreateClient();
+            var client = factory.CreateAuthenticatedClient();
 
             var command = new
             {
@@ -138,7 +138,7 @@ namespace CarRental.Tests.Integration.API.Rental
                 }
             };
 
-            var client = factory.CreateClient();
+            var client = factory.CreateAuthenticatedClient();
 
             // Act
             var response = await client.DeleteAsync($"/api/rentals/{rentalId}");
