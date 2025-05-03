@@ -1,0 +1,11 @@
+D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Domain\obj\Debug\net6.0\CarRental.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Domain\obj\Debug\net6.0\CarRental.Domain.AssemblyInfoInputs.cache
+D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Domain\obj\Debug\net6.0\CarRental.Domain.AssemblyInfo.cs
+D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Domain\obj\Debug\net6.0\CarRental.Domain.csproj.CoreCompileInputs.cache
+D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Domain\bin\Debug\net6.0\CarRental.Domain.deps.json
+D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Domain\bin\Debug\net6.0\CarRental.Domain.dll
+D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Domain\bin\Debug\net6.0\CarRental.Domain.pdb
+D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Domain\obj\Debug\net6.0\CarRental.Domain.dll
+D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Domain\obj\Debug\net6.0\refint\CarRental.Domain.dll
+D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Domain\obj\Debug\net6.0\CarRental.Domain.pdb
+D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Domain\obj\Debug\net6.0\ref\CarRental.Domain.dll

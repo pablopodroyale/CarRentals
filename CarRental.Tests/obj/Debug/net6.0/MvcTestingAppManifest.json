@@ -1,0 +1,6 @@
+{
+  "CarRental.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\repos\\CarRentalSolution\\CarRentalSolution\\CarRental.Application",
+  "CarRental.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\repos\\CarRentalSolution\\CarRentalSolution\\CarRental.Domain",
+  "CarRental.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\repos\\CarRentalSolution\\CarRentalSolution\\CarRental.Infrastructure",
+  "CarRentalApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\repos\\CarRentalSolution\\CarRentalSolution\\CarRentalApi"
+}

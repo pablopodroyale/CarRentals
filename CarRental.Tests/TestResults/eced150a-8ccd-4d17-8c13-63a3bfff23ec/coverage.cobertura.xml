@@ -1,0 +1,882 @@
+<?xml version="1.0" encoding="utf-8"?>
+<coverage line-rate="0.7073" branch-rate="0.625" version="1.9" timestamp="1746262642" lines-covered="145" lines-valid="205" branches-covered="5" branches-valid="8">
+  <sources>
+    <source>D:\repos\CarRentalSolution\CarRentalSolution\</source>
+  </sources>
+  <packages>
+    <package name="CarRental.Application" line-rate="1" branch-rate="1" complexity="14">
+      <classes>
+        <class name="CarRental.Application.UseCases.RegisterRentalUseCase" filename="CarRental.Application\UseCases\RegisterRentalUseCase.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name=".ctor" signature="(CarRental.Application.Interfaces.IRentalService)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="14" hits="6" branch="False" />
+                <line number="15" hits="6" branch="False" />
+                <line number="16" hits="6" branch="False" />
+                <line number="17" hits="6" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="14" hits="6" branch="False" />
+            <line number="15" hits="6" branch="False" />
+            <line number="16" hits="6" branch="False" />
+            <line number="17" hits="6" branch="False" />
+          </lines>
+        </class>
+        <class name="CarRental.Application.UseCases.RegisterRentalUseCase/&lt;ExecuteAsync&gt;d__2" filename="CarRental.Application\UseCases\RegisterRentalUseCase.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="20" hits="6" branch="False" />
+                <line number="21" hits="6" branch="False" />
+                <line number="22" hits="2" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="20" hits="6" branch="False" />
+            <line number="21" hits="6" branch="False" />
+            <line number="22" hits="2" branch="False" />
+          </lines>
+        </class>
+        <class name="CarRental.Application.UseCases.Rentals.Commands.RegisterRental.RegisterRentalCommand" filename="CarRental.Application\UseCases\Rentals\Commands\RegisterRental\RegisterRentalCommand.cs" line-rate="1" branch-rate="1" complexity="4">
+          <methods>
+            <method name="get_CustomerId" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="12" hits="11" branch="False" />
+              </lines>
+            </method>
+            <method name="get_CarType" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="13" hits="11" branch="False" />
+              </lines>
+            </method>
+            <method name="get_StartDate" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="14" hits="11" branch="False" />
+              </lines>
+            </method>
+            <method name="get_EndDate" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="15" hits="15" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="12" hits="11" branch="False" />
+            <line number="13" hits="11" branch="False" />
+            <line number="14" hits="11" branch="False" />
+            <line number="15" hits="15" branch="False" />
+          </lines>
+        </class>
+        <class name="CarRental.Application.UseCases.Rentals.Commands.RegisterRental.RegisterRentalCommandHandler" filename="CarRental.Application\UseCases\Rentals\Commands\RegisterRental\RegisterRentalCommandHandler.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name=".ctor" signature="(CarRental.Application.Interfaces.IRentalService)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="10" hits="1" branch="False" />
+                <line number="11" hits="1" branch="False" />
+                <line number="12" hits="1" branch="False" />
+                <line number="13" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="10" hits="1" branch="False" />
+            <line number="11" hits="1" branch="False" />
+            <line number="12" hits="1" branch="False" />
+            <line number="13" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="CarRental.Application.UseCases.Rentals.Commands.RegisterRental.RegisterRentalCommandHandler/&lt;Handle&gt;d__2" filename="CarRental.Application\UseCases\Rentals\Commands\RegisterRental\RegisterRentalCommandHandler.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="16" hits="1" branch="False" />
+                <line number="17" hits="1" branch="False" />
+                <line number="18" hits="1" branch="False" />
+                <line number="19" hits="1" branch="False" />
+                <line number="20" hits="1" branch="False" />
+                <line number="21" hits="1" branch="False" />
+                <line number="22" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="16" hits="1" branch="False" />
+            <line number="17" hits="1" branch="False" />
+            <line number="18" hits="1" branch="False" />
+            <line number="19" hits="1" branch="False" />
+            <line number="20" hits="1" branch="False" />
+            <line number="21" hits="1" branch="False" />
+            <line number="22" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="CarRental.Application.UseCases.Rentals.Commands.RegisterRental.RegisterRentalCommandValidator" filename="CarRental.Application\UseCases\Rentals\Commands\RegisterRental\RegisterRentalCommandValidator.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name=".ctor" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="7" hits="4" branch="False" />
+                <line number="8" hits="4" branch="False" />
+                <line number="9" hits="4" branch="False" />
+                <line number="10" hits="4" branch="False" />
+                <line number="11" hits="4" branch="False" />
+                <line number="12" hits="4" branch="False" />
+                <line number="13" hits="4" branch="False" />
+                <line number="14" hits="4" branch="False" />
+                <line number="15" hits="4" branch="False" />
+                <line number="16" hits="4" branch="False" />
+                <line number="17" hits="4" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="7" hits="4" branch="False" />
+            <line number="8" hits="4" branch="False" />
+            <line number="9" hits="4" branch="False" />
+            <line number="10" hits="4" branch="False" />
+            <line number="11" hits="4" branch="False" />
+            <line number="12" hits="4" branch="False" />
+            <line number="13" hits="4" branch="False" />
+            <line number="14" hits="4" branch="False" />
+            <line number="15" hits="4" branch="False" />
+            <line number="16" hits="4" branch="False" />
+            <line number="17" hits="4" branch="False" />
+          </lines>
+        </class>
+        <class name="CarRental.Application.UseCases.Customers.Commands.RegisterCustomer.RegisterCustomerCommand" filename="CarRental.Application\UseCases\Customers\Commands\RegisterCustomer\RegisterCustomerCommand.cs" line-rate="1" branch-rate="1" complexity="2">
+          <methods>
+            <method name="get_FullName" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="7" hits="8" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Address" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="8" hits="8" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="7" hits="8" branch="False" />
+            <line number="8" hits="8" branch="False" />
+          </lines>
+        </class>
+        <class name="CarRental.Application.UseCases.Customers.Commands.RegisterCustomer.RegisterCustomerCommandHandler" filename="CarRental.Application\UseCases\Customers\Commands\RegisterCustomer\RegisterCustomerCommandHandler.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name=".ctor" signature="(CarRental.Domain.Interfaces.ICustomerRepository)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="12" hits="1" branch="False" />
+                <line number="13" hits="1" branch="False" />
+                <line number="14" hits="1" branch="False" />
+                <line number="15" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="12" hits="1" branch="False" />
+            <line number="13" hits="1" branch="False" />
+            <line number="14" hits="1" branch="False" />
+            <line number="15" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="CarRental.Application.UseCases.Customers.Commands.RegisterCustomer.RegisterCustomerCommandHandler/&lt;Handle&gt;d__2" filename="CarRental.Application\UseCases\Customers\Commands\RegisterCustomer\RegisterCustomerCommandHandler.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="18" hits="1" branch="False" />
+                <line number="19" hits="1" branch="False" />
+                <line number="20" hits="1" branch="False" />
+                <line number="21" hits="1" branch="False" />
+                <line number="22" hits="1" branch="False" />
+                <line number="23" hits="1" branch="False" />
+                <line number="25" hits="1" branch="False" />
+                <line number="26" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="18" hits="1" branch="False" />
+            <line number="19" hits="1" branch="False" />
+            <line number="20" hits="1" branch="False" />
+            <line number="21" hits="1" branch="False" />
+            <line number="22" hits="1" branch="False" />
+            <line number="23" hits="1" branch="False" />
+            <line number="25" hits="1" branch="False" />
+            <line number="26" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="CarRental.Application.UseCases.Customers.Commands.RegisterCustomer.RegisterCustomerCommandValidator" filename="CarRental.Application\UseCases\Customers\Commands\RegisterCustomer\RegisterCustomerCommandValidator.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name=".ctor" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="7" hits="3" branch="False" />
+                <line number="8" hits="3" branch="False" />
+                <line number="9" hits="3" branch="False" />
+                <line number="10" hits="3" branch="False" />
+                <line number="11" hits="3" branch="False" />
+                <line number="13" hits="3" branch="False" />
+                <line number="14" hits="3" branch="False" />
+                <line number="15" hits="3" branch="False" />
+                <line number="16" hits="3" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="7" hits="3" branch="False" />
+            <line number="8" hits="3" branch="False" />
+            <line number="9" hits="3" branch="False" />
+            <line number="10" hits="3" branch="False" />
+            <line number="11" hits="3" branch="False" />
+            <line number="13" hits="3" branch="False" />
+            <line number="14" hits="3" branch="False" />
+            <line number="15" hits="3" branch="False" />
+            <line number="16" hits="3" branch="False" />
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="CarRental.Domain" line-rate="0.7857" branch-rate="0.5" complexity="20">
+      <classes>
+        <class name="Rental" filename="CarRental.Domain\Entities\Rental.cs" line-rate="0.875" branch-rate="0.5" complexity="8">
+          <methods>
+            <method name="get_Id" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="3" hits="5" branch="False" />
+              </lines>
+            </method>
+            <method name="get_CustomerId" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="4" hits="4" branch="False" />
+              </lines>
+            </method>
+            <method name="get_CarId" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="5" hits="4" branch="False" />
+              </lines>
+            </method>
+            <method name="get_StartDate" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="6" hits="3" branch="False" />
+              </lines>
+            </method>
+            <method name="get_EndDate" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="7" hits="3" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="9" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(System.Guid,System.Guid,System.DateTime,System.DateTime)" line-rate="0.9" branch-rate="0.5" complexity="2">
+              <lines>
+                <line number="11" hits="3" branch="False" />
+                <line number="12" hits="3" branch="False" />
+                <line number="13" hits="3" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="18" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="14" hits="0" branch="False" />
+                <line number="16" hits="3" branch="False" />
+                <line number="17" hits="3" branch="False" />
+                <line number="18" hits="3" branch="False" />
+                <line number="19" hits="3" branch="False" />
+                <line number="20" hits="3" branch="False" />
+                <line number="21" hits="3" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="3" hits="5" branch="False" />
+            <line number="4" hits="4" branch="False" />
+            <line number="5" hits="4" branch="False" />
+            <line number="6" hits="3" branch="False" />
+            <line number="7" hits="3" branch="False" />
+            <line number="9" hits="0" branch="False" />
+            <line number="11" hits="3" branch="False" />
+            <line number="12" hits="3" branch="False" />
+            <line number="13" hits="3" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="18" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="14" hits="0" branch="False" />
+            <line number="16" hits="3" branch="False" />
+            <line number="17" hits="3" branch="False" />
+            <line number="18" hits="3" branch="False" />
+            <line number="19" hits="3" branch="False" />
+            <line number="20" hits="3" branch="False" />
+            <line number="21" hits="3" branch="False" />
+          </lines>
+        </class>
+        <class name="CarRental.Domain.Car" filename="CarRental.Domain\Entities\Car.cs" line-rate="1" branch-rate="1" complexity="4">
+          <methods>
+            <method name="get_Id" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="5" hits="5" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Type" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="6" hits="3" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Model" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="7" hits="3" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Services" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="8" hits="4" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="5" hits="5" branch="False" />
+            <line number="6" hits="3" branch="False" />
+            <line number="7" hits="3" branch="False" />
+            <line number="8" hits="4" branch="False" />
+          </lines>
+        </class>
+        <class name="CarRental.Domain.Service" filename="CarRental.Domain\Entities\Service.cs" line-rate="0" branch-rate="1" complexity="3">
+          <methods>
+            <method name="get_Id" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="5" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="get_CarId" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="6" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Date" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="7" hits="0" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="5" hits="0" branch="False" />
+            <line number="6" hits="0" branch="False" />
+            <line number="7" hits="0" branch="False" />
+          </lines>
+        </class>
+        <class name="CarRental.Domain.Exceptions.NoCarAvailableException" filename="CarRental.Domain\Exceptions\NoCarAvailableException.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name=".ctor" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="11" hits="3" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="11" hits="3" branch="False" />
+          </lines>
+        </class>
+        <class name="CarRental.Domain.Exceptions.RentalOverlapException" filename="CarRental.Domain\Exceptions\RentalOverlapException.cs" line-rate="0" branch-rate="1" complexity="1">
+          <methods>
+            <method name=".ctor" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="11" hits="0" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="11" hits="0" branch="False" />
+          </lines>
+        </class>
+        <class name="CarRental.Domain.Entities.Customer" filename="CarRental.Domain\Entities\Customer.cs" line-rate="1" branch-rate="1" complexity="3">
+          <methods>
+            <method name="get_Id" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="5" hits="4" branch="False" />
+              </lines>
+            </method>
+            <method name="get_FullName" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="6" hits="5" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Address" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="7" hits="5" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="5" hits="4" branch="False" />
+            <line number="6" hits="5" branch="False" />
+            <line number="7" hits="5" branch="False" />
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="CarRental.Infrastructure" line-rate="0.4067" branch-rate="0.5" complexity="14">
+      <classes>
+        <class name="CarRental.Infrastructure.RentalService" filename="CarRental.Infrastructure\RentalService.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name=".ctor" signature="(CarRental.Infrastructure.Persistence.CarRentalDbContext)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="13" hits="3" branch="False" />
+                <line number="14" hits="3" branch="False" />
+                <line number="15" hits="3" branch="False" />
+                <line number="16" hits="3" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="13" hits="3" branch="False" />
+            <line number="14" hits="3" branch="False" />
+            <line number="15" hits="3" branch="False" />
+            <line number="16" hits="3" branch="False" />
+          </lines>
+        </class>
+        <class name="CarRental.Infrastructure.RentalService/&lt;GetMostRentedCarTypeAsync&gt;d__3" filename="CarRental.Infrastructure\RentalService.cs" line-rate="0" branch-rate="0" complexity="2">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="0" branch-rate="0" complexity="2">
+              <lines>
+                <line number="40" hits="0" branch="False" />
+                <line number="41" hits="0" branch="False" />
+                <line number="42" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="177" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="43" hits="0" branch="False" />
+                <line number="45" hits="0" branch="False" />
+                <line number="46" hits="0" branch="False" />
+                <line number="47" hits="0" branch="False" />
+                <line number="48" hits="0" branch="False" />
+                <line number="49" hits="0" branch="False" />
+                <line number="50" hits="0" branch="False" />
+                <line number="52" hits="0" branch="False" />
+                <line number="53" hits="0" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="40" hits="0" branch="False" />
+            <line number="41" hits="0" branch="False" />
+            <line number="42" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="177" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="43" hits="0" branch="False" />
+            <line number="45" hits="0" branch="False" />
+            <line number="46" hits="0" branch="False" />
+            <line number="47" hits="0" branch="False" />
+            <line number="48" hits="0" branch="False" />
+            <line number="49" hits="0" branch="False" />
+            <line number="50" hits="0" branch="False" />
+            <line number="52" hits="0" branch="False" />
+            <line number="53" hits="0" branch="False" />
+          </lines>
+        </class>
+        <class name="CarRental.Infrastructure.RentalService/&lt;RegisterRentalAsync&gt;d__2" filename="CarRental.Infrastructure\RentalService.cs" line-rate="1" branch-rate="1" complexity="2">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="2">
+              <lines>
+                <line number="19" hits="3" branch="False" />
+                <line number="20" hits="3" branch="False" />
+                <line number="21" hits="3" branch="False" />
+                <line number="22" hits="3" branch="False" />
+                <line number="23" hits="3" branch="False" />
+                <line number="25" hits="3" branch="False" />
+                <line number="26" hits="3" branch="False" />
+                <line number="27" hits="3" branch="False" />
+                <line number="29" hits="3" branch="False" />
+                <line number="30" hits="4" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="903" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="32" hits="2" branch="False" />
+                <line number="34" hits="2" branch="False" />
+                <line number="35" hits="2" branch="False" />
+                <line number="36" hits="2" branch="False" />
+                <line number="37" hits="2" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="19" hits="3" branch="False" />
+            <line number="20" hits="3" branch="False" />
+            <line number="21" hits="3" branch="False" />
+            <line number="22" hits="3" branch="False" />
+            <line number="23" hits="3" branch="False" />
+            <line number="25" hits="3" branch="False" />
+            <line number="26" hits="3" branch="False" />
+            <line number="27" hits="3" branch="False" />
+            <line number="29" hits="3" branch="False" />
+            <line number="30" hits="4" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="903" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="32" hits="2" branch="False" />
+            <line number="34" hits="2" branch="False" />
+            <line number="35" hits="2" branch="False" />
+            <line number="36" hits="2" branch="False" />
+            <line number="37" hits="2" branch="False" />
+          </lines>
+        </class>
+        <class name="CarRental.Infrastructure.Repositories.CarRepository" filename="CarRental.Infrastructure\Repositories\CarRepository.cs" line-rate="0" branch-rate="1" complexity="1">
+          <methods>
+            <method name=".ctor" signature="(CarRental.Infrastructure.Persistence.CarRentalDbContext)" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="12" hits="0" branch="False" />
+                <line number="13" hits="0" branch="False" />
+                <line number="14" hits="0" branch="False" />
+                <line number="15" hits="0" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="12" hits="0" branch="False" />
+            <line number="13" hits="0" branch="False" />
+            <line number="14" hits="0" branch="False" />
+            <line number="15" hits="0" branch="False" />
+          </lines>
+        </class>
+        <class name="CarRental.Infrastructure.Repositories.CarRepository/&lt;GetAvailableCars&gt;d__2" filename="CarRental.Infrastructure\Repositories\CarRepository.cs" line-rate="0" branch-rate="1" complexity="1">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="18" hits="0" branch="False" />
+                <line number="19" hits="0" branch="False" />
+                <line number="20" hits="0" branch="False" />
+                <line number="21" hits="0" branch="False" />
+                <line number="22" hits="0" branch="False" />
+                <line number="24" hits="0" branch="False" />
+                <line number="25" hits="0" branch="False" />
+                <line number="26" hits="0" branch="False" />
+                <line number="27" hits="0" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="18" hits="0" branch="False" />
+            <line number="19" hits="0" branch="False" />
+            <line number="20" hits="0" branch="False" />
+            <line number="21" hits="0" branch="False" />
+            <line number="22" hits="0" branch="False" />
+            <line number="24" hits="0" branch="False" />
+            <line number="25" hits="0" branch="False" />
+            <line number="26" hits="0" branch="False" />
+            <line number="27" hits="0" branch="False" />
+          </lines>
+        </class>
+        <class name="CarRental.Infrastructure.Repositories.CustomerRepository" filename="CarRental.Infrastructure\Repositories\CustomerRepository.cs" line-rate="0" branch-rate="1" complexity="1">
+          <methods>
+            <method name=".ctor" signature="(CarRental.Infrastructure.Persistence.CarRentalDbContext)" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="12" hits="0" branch="False" />
+                <line number="13" hits="0" branch="False" />
+                <line number="14" hits="0" branch="False" />
+                <line number="15" hits="0" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="12" hits="0" branch="False" />
+            <line number="13" hits="0" branch="False" />
+            <line number="14" hits="0" branch="False" />
+            <line number="15" hits="0" branch="False" />
+          </lines>
+        </class>
+        <class name="CarRental.Infrastructure.Repositories.CustomerRepository/&lt;AddAsync&gt;d__2" filename="CarRental.Infrastructure\Repositories\CustomerRepository.cs" line-rate="0" branch-rate="1" complexity="1">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="18" hits="0" branch="False" />
+                <line number="19" hits="0" branch="False" />
+                <line number="20" hits="0" branch="False" />
+                <line number="21" hits="0" branch="False" />
+                <line number="22" hits="0" branch="False" />
+                <line number="23" hits="0" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="18" hits="0" branch="False" />
+            <line number="19" hits="0" branch="False" />
+            <line number="20" hits="0" branch="False" />
+            <line number="21" hits="0" branch="False" />
+            <line number="22" hits="0" branch="False" />
+            <line number="23" hits="0" branch="False" />
+          </lines>
+        </class>
+        <class name="CarRental.Infrastructure.Persistence.CarRentalDbContext" filename="CarRental.Infrastructure\Persistence\CarRentalDbContext.cs" line-rate="1" branch-rate="1" complexity="5">
+          <methods>
+            <method name="get_Customers" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="12" hits="8" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Cars" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="13" hits="11" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Rentals" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="14" hits="12" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Services" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="15" hits="5" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(Microsoft.EntityFrameworkCore.DbContextOptions`1&lt;CarRental.Infrastructure.Persistence.CarRentalDbContext&gt;)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="10" hits="15" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="12" hits="8" branch="False" />
+            <line number="13" hits="11" branch="False" />
+            <line number="14" hits="12" branch="False" />
+            <line number="15" hits="5" branch="False" />
+            <line number="10" hits="15" branch="False" />
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="CarRentalApi" line-rate="0.6934999999999999" branch-rate="1" complexity="12">
+      <classes>
+        <class name="CustomersController" filename="CarRentalApi\Controllers\CustomersController.cs" line-rate="0" branch-rate="1" complexity="1">
+          <methods>
+            <method name=".ctor" signature="(MediatR.IMediator)" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="11" hits="0" branch="False" />
+                <line number="12" hits="0" branch="False" />
+                <line number="13" hits="0" branch="False" />
+                <line number="14" hits="0" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="11" hits="0" branch="False" />
+            <line number="12" hits="0" branch="False" />
+            <line number="13" hits="0" branch="False" />
+            <line number="14" hits="0" branch="False" />
+          </lines>
+        </class>
+        <class name="CustomersController/&lt;Register&gt;d__2" filename="CarRentalApi\Controllers\CustomersController.cs" line-rate="0" branch-rate="1" complexity="1">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="18" hits="0" branch="False" />
+                <line number="19" hits="0" branch="False" />
+                <line number="20" hits="0" branch="False" />
+                <line number="21" hits="0" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="18" hits="0" branch="False" />
+            <line number="19" hits="0" branch="False" />
+            <line number="20" hits="0" branch="False" />
+            <line number="21" hits="0" branch="False" />
+          </lines>
+        </class>
+        <class name="RentalsController" filename="CarRentalApi\Controllers\RentalsController.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name=".ctor" signature="(MediatR.IMediator)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="11" hits="1" branch="False" />
+                <line number="12" hits="1" branch="False" />
+                <line number="13" hits="1" branch="False" />
+                <line number="14" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="11" hits="1" branch="False" />
+            <line number="12" hits="1" branch="False" />
+            <line number="13" hits="1" branch="False" />
+            <line number="14" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="RentalsController/&lt;Register&gt;d__2" filename="CarRentalApi\Controllers\RentalsController.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="18" hits="1" branch="False" />
+                <line number="19" hits="1" branch="False" />
+                <line number="20" hits="1" branch="False" />
+                <line number="21" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="18" hits="1" branch="False" />
+            <line number="19" hits="1" branch="False" />
+            <line number="20" hits="1" branch="False" />
+            <line number="21" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="Program" filename="CarRentalApi\Program.cs" line-rate="1" branch-rate="1" complexity="2">
+          <methods>
+            <method name="&lt;Main&gt;$" signature="(System.String[])" line-rate="1" branch-rate="1" complexity="2">
+              <lines>
+                <line number="13" hits="2" branch="False" />
+                <line number="17" hits="2" branch="False" />
+                <line number="19" hits="2" branch="False" />
+                <line number="20" hits="2" branch="False" />
+                <line number="21" hits="2" branch="False" />
+                <line number="22" hits="2" branch="False" />
+                <line number="23" hits="2" branch="False" />
+                <line number="24" hits="2" branch="False" />
+                <line number="25" hits="2" branch="False" />
+                <line number="26" hits="2" branch="False" />
+                <line number="27" hits="2" branch="False" />
+                <line number="28" hits="4" branch="False" />
+                <line number="29" hits="2" branch="False" />
+                <line number="30" hits="4" branch="False" />
+                <line number="32" hits="2" branch="False" />
+                <line number="33" hits="2" branch="False" />
+                <line number="37" hits="2" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="302" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="38" hits="2" branch="False" />
+                <line number="39" hits="2" branch="False" />
+                <line number="40" hits="2" branch="False" />
+                <line number="41" hits="2" branch="False" />
+                <line number="43" hits="2" branch="False" />
+                <line number="45" hits="2" branch="False" />
+                <line number="47" hits="2" branch="False" />
+                <line number="49" hits="2" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="13" hits="2" branch="False" />
+            <line number="17" hits="2" branch="False" />
+            <line number="19" hits="2" branch="False" />
+            <line number="20" hits="2" branch="False" />
+            <line number="21" hits="2" branch="False" />
+            <line number="22" hits="2" branch="False" />
+            <line number="23" hits="2" branch="False" />
+            <line number="24" hits="2" branch="False" />
+            <line number="25" hits="2" branch="False" />
+            <line number="26" hits="2" branch="False" />
+            <line number="27" hits="2" branch="False" />
+            <line number="28" hits="4" branch="False" />
+            <line number="29" hits="2" branch="False" />
+            <line number="30" hits="4" branch="False" />
+            <line number="32" hits="2" branch="False" />
+            <line number="33" hits="2" branch="False" />
+            <line number="37" hits="2" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="302" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="38" hits="2" branch="False" />
+            <line number="39" hits="2" branch="False" />
+            <line number="40" hits="2" branch="False" />
+            <line number="41" hits="2" branch="False" />
+            <line number="43" hits="2" branch="False" />
+            <line number="45" hits="2" branch="False" />
+            <line number="47" hits="2" branch="False" />
+            <line number="49" hits="2" branch="False" />
+          </lines>
+        </class>
+        <class name="CarRentalSolution.Requests.RegisterRentalRequest" filename="CarRentalApi\Requests\RegisterRentalRequest.cs" line-rate="0" branch-rate="1" complexity="4">
+          <methods>
+            <method name="get_CustomerId" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="5" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="get_CarType" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="6" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="get_StartDate" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="7" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="get_EndDate" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="8" hits="0" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="5" hits="0" branch="False" />
+            <line number="6" hits="0" branch="False" />
+            <line number="7" hits="0" branch="False" />
+            <line number="8" hits="0" branch="False" />
+          </lines>
+        </class>
+        <class name="CarRental.API.Middlewares.GlobalExceptionMiddleware" filename="CarRentalApi\Middlewares\GlobalExceptionMiddleware.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name=".ctor" signature="(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.Extensions.Logging.ILogger`1&lt;CarRental.API.Middlewares.GlobalExceptionMiddleware&gt;)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="13" hits="2" branch="False" />
+                <line number="14" hits="2" branch="False" />
+                <line number="15" hits="2" branch="False" />
+                <line number="16" hits="2" branch="False" />
+                <line number="17" hits="2" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="13" hits="2" branch="False" />
+            <line number="14" hits="2" branch="False" />
+            <line number="15" hits="2" branch="False" />
+            <line number="16" hits="2" branch="False" />
+            <line number="17" hits="2" branch="False" />
+          </lines>
+        </class>
+        <class name="CarRental.API.Middlewares.GlobalExceptionMiddleware/&lt;Invoke&gt;d__3" filename="CarRentalApi\Middlewares\GlobalExceptionMiddleware.cs" line-rate="0.41659999999999997" branch-rate="1" complexity="1">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="0.41659999999999997" branch-rate="1" complexity="1">
+              <lines>
+                <line number="20" hits="1" branch="False" />
+                <line number="22" hits="1" branch="False" />
+                <line number="23" hits="1" branch="False" />
+                <line number="24" hits="1" branch="False" />
+                <line number="25" hits="0" branch="False" />
+                <line number="26" hits="0" branch="False" />
+                <line number="27" hits="0" branch="False" />
+                <line number="29" hits="0" branch="False" />
+                <line number="30" hits="0" branch="False" />
+                <line number="31" hits="0" branch="False" />
+                <line number="32" hits="0" branch="False" />
+                <line number="33" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="20" hits="1" branch="False" />
+            <line number="22" hits="1" branch="False" />
+            <line number="23" hits="1" branch="False" />
+            <line number="24" hits="1" branch="False" />
+            <line number="25" hits="0" branch="False" />
+            <line number="26" hits="0" branch="False" />
+            <line number="27" hits="0" branch="False" />
+            <line number="29" hits="0" branch="False" />
+            <line number="30" hits="0" branch="False" />
+            <line number="31" hits="0" branch="False" />
+            <line number="32" hits="0" branch="False" />
+            <line number="33" hits="1" branch="False" />
+          </lines>
+        </class>
+      </classes>
+    </package>
+  </packages>
+</coverage>
