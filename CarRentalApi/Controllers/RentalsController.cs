@@ -1,4 +1,5 @@
 ﻿using CarRental.Application.UseCases.Rentals.Commands.CancelRental;
+using CarRental.Application.UseCases.Rentals.Commands.ModifyRental;
 using CarRental.Application.UseCases.Rentals.Commands.RegisterRental;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -25,6 +26,14 @@ public class RentalsController : ControllerBase
     public async Task<IActionResult> Cancel(Guid id)
     {
         await _mediator.Send(new CancelRentalCommand { RentalId = id });
+        return NoContent();
+    }
+
+    [HttpPut("{rentalId}")]
+    public async Task<IActionResult> Update(Guid rentalId, [FromBody] ModifyRentalCommand command)
+    {
+        command.RentalId = rentalId;
+        await _mediator.Send(command);
         return NoContent();
     }
 }

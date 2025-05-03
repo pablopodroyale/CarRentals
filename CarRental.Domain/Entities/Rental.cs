@@ -9,12 +9,6 @@ public class Rental
     public DateTime EndDate { get; private set; }
     public bool IsCanceled { get; private set; }
 
-    public void Cancel()
-    {
-        if (IsCanceled) throw new InvalidOperationException("Rental already canceled.");
-        IsCanceled = true;
-    }
-
     private Rental() { }
 
     public Rental(Guid customerId, Guid carId, DateTime start, DateTime end)
@@ -27,5 +21,28 @@ public class Rental
         CarId = carId;
         StartDate = start;
         EndDate = end;
+    }
+
+    public void ModifyDates(DateTime newStartDate, DateTime newEndDate)
+    {
+        if (newStartDate >= newEndDate)
+            throw new ArgumentException("Start date must be before end date.");
+
+        StartDate = newStartDate;
+        EndDate = newEndDate;
+    }
+
+    public void ChangeCar(Guid newCarId)
+    {
+        if (newCarId == Guid.Empty)
+            throw new ArgumentException("Invalid car ID.");
+
+        CarId = newCarId;
+    }
+
+    public void Cancel()
+    {
+        if (IsCanceled) throw new InvalidOperationException("Rental already canceled.");
+        IsCanceled = true;
     }
 }
