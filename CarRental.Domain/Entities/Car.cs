@@ -6,4 +6,5 @@ public class Car
     public string Type { get; set; }
     public string Model { get; set; }
     public List<Service> Services { get; set; } = new();
+    public string Location { get; set; }
 }

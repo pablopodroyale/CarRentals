@@ -34,7 +34,7 @@ namespace CarRental.Tests.Integration.API.Rental
                     var db = sp.GetRequiredService<CarRentalDbContext>();
 
                     db.Customers.Add(new Domain.Entities.Customer { Id = customerId, FullName = "Test User", Address = "123 Main St" });
-                    db.Cars.Add(new Car { Id = carId, Type = "SUV", Model = "Toyota" });
+                    db.Cars.Add(new Car { Id = carId, Type = "SUV", Model = "Toyota", Location = "Buenos Aires" });
 
                     db.SaveChanges();
                 }
@@ -79,10 +79,17 @@ namespace CarRental.Tests.Integration.API.Rental
                 {
                     var db = sp.GetRequiredService<CarRentalDbContext>();
 
-                    db.Customers.Add(new Domain.Entities.Customer { Id = customerId, FullName = "Mod Test", Address = "456 Change St" });
+                    db.Customers.Add(new Domain.Entities.Customer
+                    {
+                        Id = customerId,
+                        FullName = "Mod Test",
+                        Address = "456 Change St"
+                    });
+
                     db.Cars.AddRange(
-                        new Car { Id = oldCarId, Type = "Sedan", Model = "Ford Focus" },
-                        new Car { Id = newCarId, Type = "SUV", Model = "Honda CR-V" });
+                        new Car { Id = oldCarId, Type = "Sedan", Model = "Ford Focus", Location = "Buenos Aires" },
+                        new Car { Id = newCarId, Type = "SUV", Model = "Honda CR-V", Location = "Córdoba" }
+                    );
 
                     var rental = new Domain.Entities.Rental(customerId, oldCarId, DateTime.Today, DateTime.Today.AddDays(2));
                     typeof(Domain.Entities.Rental).GetProperty("Id")!.SetValue(rental, rentalId);
@@ -111,9 +118,9 @@ namespace CarRental.Tests.Integration.API.Rental
 
             // Assert
             response.EnsureSuccessStatusCode();
-            var responseText = await response.Content.ReadAsStringAsync();
             Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.NoContent));
         }
+
 
         [Test]
         public async Task Should_CancelRental_Through_Api()
@@ -128,8 +135,20 @@ namespace CarRental.Tests.Integration.API.Rental
                 SeedAction = sp =>
                 {
                     var db = sp.GetRequiredService<CarRentalDbContext>();
-                    db.Customers.Add(new Domain.Entities.Customer { Id = customerId, FullName = "Cancel Test", Address = "789 Cancel St" });
-                    db.Cars.Add(new Car { Id = carId, Type = "SUV", Model = "Kia Sportage" });
+                    db.Customers.Add(new Domain.Entities.Customer
+                    {
+                        Id = customerId,
+                        FullName = "Cancel Test",
+                        Address = "789 Cancel St"
+                    });
+
+                    db.Cars.Add(new Car
+                    {
+                        Id = carId,
+                        Type = "SUV",
+                        Model = "Kia Sportage",
+                        Location = "Buenos Aires"
+                    });
 
                     var rental = new Domain.Entities.Rental(customerId, carId, DateTime.Today, DateTime.Today.AddDays(3));
                     typeof(Domain.Entities.Rental).GetProperty("Id")!.SetValue(rental, rentalId);
@@ -145,8 +164,8 @@ namespace CarRental.Tests.Integration.API.Rental
 
             // Assert
             response.EnsureSuccessStatusCode();
-            var responseText = await response.Content.ReadAsStringAsync();
             Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.NoContent));
         }
+
     }
 }

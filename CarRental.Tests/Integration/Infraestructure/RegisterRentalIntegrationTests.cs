@@ -1,10 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
-using CarRental.Application.UseCases;
-using CarRental.Infrastructure.Persistence;
+﻿using CarRental.Application.UseCases;
 using CarRental.Domain.Entities;
-using CarRental.Infrastructure;
-using CarRental.Domain;
 using CarRental.Domain.Exceptions;
+using CarRental.Infrastructure.Persistence;
+using CarRental.Infrastructure.Services;
+using Microsoft.EntityFrameworkCore;
 
 namespace CarRental.Tests.Integration.Infraestructure
 {
@@ -36,7 +35,8 @@ namespace CarRental.Tests.Integration.Infraestructure
             {
                 Id = carId,
                 Type = "SUV",
-                Model = "Toyota RAV4"
+                Model = "Toyota RAV4",
+                Location = "Buenos Aires"
             });
 
             await context.SaveChangesAsync();
@@ -77,7 +77,7 @@ namespace CarRental.Tests.Integration.Infraestructure
                 new Customer { Id = customer1Id, FullName = "Juan", Address = "X" },
                 new Customer { Id = customer2Id, FullName = "Ana", Address = "Y" });
 
-            context.Cars.Add(new Car { Id = carId, Type = "SUV", Model = "Toyota" });
+            context.Cars.Add(new Car { Id = carId, Type = "SUV", Model = "Toyota", Location = "Córdoba" });
 
             context.Rentals.Add(new Rental
             (

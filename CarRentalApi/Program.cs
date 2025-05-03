@@ -5,10 +5,10 @@ using CarRental.Application.UseCases.Customers.Commands.RegisterCustomer;
 using CarRental.Application.UseCases.Rentals.Commands.RegisterRental;
 using CarRental.Application.Validators.Auth;
 using CarRental.Domain.Interfaces;
-using CarRental.Infrastructure;
 using CarRental.Infrastructure.Identity;
 using CarRental.Infrastructure.Persistence;
 using CarRental.Infrastructure.Repositories;
+using CarRental.Infrastructure.Services;
 using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -67,6 +67,9 @@ builder.Services.AddScoped<ICarRepository, CarRepository>();
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<IRentalRepository, RentalRepository>();
 builder.Services.AddValidatorsFromAssemblyContaining<LoginDtoValidator>();
+builder.Services.AddScoped<IRentalStatisticsService, RentalStatisticsService>();
+
+builder.Services.AddMemoryCache();
 
 var app = builder.Build();
 

@@ -5,7 +5,7 @@ using CarRental.Domain.Exceptions;
 using CarRental.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
-namespace CarRental.Infrastructure
+namespace CarRental.Infrastructure.Services
 {
     public class RentalService : IRentalService
     {
@@ -36,22 +36,5 @@ namespace CarRental.Infrastructure
             await _context.SaveChangesAsync();
             return rental.Id;
         }
-
-        public async Task<(string type, double utilization)> GetMostRentedCarTypeAsync()
-        {
-            var totalRentals = await _context.Rentals.CountAsync();
-            if (totalRentals == 0)
-                return ("N/A", 0);
-
-            var top = await _context.Rentals
-                .Join(_context.Cars, r => r.CarId, c => c.Id, (r, c) => c.Type)
-                .GroupBy(t => t)
-                .OrderByDescending(g => g.Count())
-                .Select(g => new { Type = g.Key, Count = g.Count() })
-                .FirstOrDefaultAsync();
-
-            return (top.Type, (double)top.Count / totalRentals * 100);
-        }
-
     }
 }
