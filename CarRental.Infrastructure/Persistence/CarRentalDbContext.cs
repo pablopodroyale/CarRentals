@@ -16,5 +16,24 @@ namespace CarRental.Infrastructure.Persistence
         public DbSet<Car> Cars { get; set; }
         public DbSet<Rental> Rentals { get; set; }
         public DbSet<Service> Services { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            builder.Entity<Customer>()
+                .HasIndex(c => c.Email)
+                .IsUnique();
+
+            builder.Entity<Customer>()
+                .Property(c => c.ApplicationUserId)
+                .IsRequired();
+
+             //Si querés agregar una relación de navegación en el futuro:
+             builder.Entity<Customer>()
+                 .HasOne<ApplicationUser>()
+                 .WithMany()
+                 .HasForeignKey(c => c.ApplicationUserId);
+        }
     }
 }

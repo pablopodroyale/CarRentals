@@ -19,6 +19,7 @@ namespace CarRentalApi.Controllers
         }
 
         [HttpGet("most-rented-type")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetMostRentedCarType()
         {
             var result = await _mediator.Send(new GetMostRentedCarTypeQuery());
@@ -26,6 +27,7 @@ namespace CarRentalApi.Controllers
         }
 
         [HttpGet("utilization-by-location")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetUtilizationPerLocation()
         {
             var result = await _mediator.Send(new GetUtilizationPerLocationQuery());

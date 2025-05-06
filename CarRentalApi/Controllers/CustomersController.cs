@@ -16,6 +16,7 @@ public class CustomersController : ControllerBase
     }
 
     [HttpPost]
+    [AllowAnonymous]
     public async Task<IActionResult> Register(RegisterCustomerCommand command)
     {
         var customerId = await _mediator.Send(command);

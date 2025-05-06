@@ -32,7 +32,7 @@ public class RentalStatisticsService : IRentalStatisticsService
             }
 
             var top = await _context.Rentals
-                .Join(_context.Cars, r => r.CarId, c => c.Id, (r, c) => c.Type)
+                .Join(_context.Cars, r => r.Car.Id, c => c.Id, (r, c) => c.Type)
                 .GroupBy(t => t)
                 .OrderByDescending(g => g.Count())
                 .Select(g => new { Type = g.Key, Count = g.Count() })
@@ -53,7 +53,7 @@ public class RentalStatisticsService : IRentalStatisticsService
             entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(10);
 
             var rentals = await _context.Rentals
-                .Join(_context.Cars, r => r.CarId, c => c.Id, (r, c) => new { c.Location })
+                .Join(_context.Cars, r => r.Car.Id, c => c.Id, (r, c) => new { c.Location })
                 .GroupBy(x => x.Location)
                 .Select(g => new { Location = g.Key, Count = g.Count() })
                 .ToListAsync();

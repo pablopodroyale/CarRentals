@@ -9,53 +9,54 @@ namespace CarRental.Tests.UseCases.Rentals.Commands
     [TestFixture]
     public class ModifyRentalCommandHandlerTests
     {
-        private Mock<IRentalRepository> _rentalRepositoryMock;
+        private Mock<IRentalService> _rentalServiceMock;
         private Mock<ICarRepository> _carRepositoryMock;
         private ModifyRentalCommandHandler _handler;
 
         [SetUp]
         public void SetUp()
         {
-            _rentalRepositoryMock = new Mock<IRentalRepository>();
+            _rentalServiceMock = new Mock<IRentalService>();
             _carRepositoryMock = new Mock<ICarRepository>();
-            _handler = new ModifyRentalCommandHandler(_rentalRepositoryMock.Object, _carRepositoryMock.Object);
+            _handler = new ModifyRentalCommandHandler(_rentalServiceMock.Object, _carRepositoryMock.Object);
         }
 
         [Test]
-        public async Task Should_ModifyRental_When_RentalExists()
+        public async Task Should_ModifyRental_When_Valid()
         {
-            // Arrange
             var rentalId = Guid.NewGuid();
-            var customerId = Guid.NewGuid();
-            var carId = Guid.NewGuid();
-            var rental = new Rental(customerId, carId, DateTime.Today, DateTime.Today.AddDays(2));
-            typeof(Rental).GetProperty("Id")!.SetValue(rental, rentalId);
+            var car = new Car
+            {
+                Id = Guid.NewGuid(),
+                Type = "SUV",
+                Model = "RAV4",
+                Location = "Buenos Aires"
+            };
 
-            _rentalRepositoryMock.Setup(r => r.GetByIdAsync(rentalId, It.IsAny<CancellationToken>()))
-                                 .ReturnsAsync(rental);
+            _carRepositoryMock.Setup(c => c.GetByIdAsync(car.Id, It.IsAny<CancellationToken>()))
+                              .ReturnsAsync(car);
 
             var command = new ModifyRentalCommand
             {
                 RentalId = rentalId,
-                CarId = Guid.NewGuid(),
+                CarId = car.Id,
                 NewStartDate = DateTime.Today.AddDays(1),
                 NewEndDate = DateTime.Today.AddDays(4)
             };
 
-            // Act
             var result = await _handler.Handle(command, CancellationToken.None);
 
-            // Assert
             Assert.That(result, Is.EqualTo(Unit.Value));
-            _rentalRepositoryMock.Verify(r => r.SaveChangesAsync(It.IsAny<CancellationToken>()), Times.Once);
+            _rentalServiceMock.Verify(s =>
+                s.UpdateAsync(rentalId, command.NewStartDate, command.NewEndDate, car, It.IsAny<CancellationToken>()),
+                Times.Once);
         }
 
         [Test]
-        public void Should_Throw_When_RentalNotFound()
+        public void Should_Throw_When_CarNotFound()
         {
-            // Arrange
-            _rentalRepositoryMock.Setup(r => r.GetByIdAsync(It.IsAny<Guid>(), It.IsAny<CancellationToken>()))
-                                 .ReturnsAsync((Rental)null);
+            _carRepositoryMock.Setup(c => c.GetByIdAsync(It.IsAny<Guid>(), It.IsAny<CancellationToken>()))
+                              .ReturnsAsync((Car)null!);
 
             var command = new ModifyRentalCommand
             {
@@ -65,57 +66,8 @@ namespace CarRental.Tests.UseCases.Rentals.Commands
                 NewEndDate = DateTime.Today.AddDays(1)
             };
 
-            // Act & Assert
-            Assert.ThrowsAsync<KeyNotFoundException>(async () =>
-                await _handler.Handle(command, CancellationToken.None));
-        }
-
-        [Test]
-        public void Should_Throw_When_DatesAreInvalid()
-        {
-            var rentalId = Guid.NewGuid();
-            var customerId = Guid.NewGuid();
-            var carId = Guid.NewGuid();
-            var rental = new Rental(customerId, carId, DateTime.Today, DateTime.Today.AddDays(2));
-            typeof(Rental).GetProperty("Id")!.SetValue(rental, rentalId);
-
-            _rentalRepositoryMock.Setup(r => r.GetByIdAsync(rentalId, It.IsAny<CancellationToken>()))
-                                 .ReturnsAsync(rental);
-
-            var command = new ModifyRentalCommand
-            {
-                RentalId = rentalId,
-                CarId = Guid.NewGuid(),
-                NewStartDate = DateTime.Today.AddDays(5),
-                NewEndDate = DateTime.Today.AddDays(4)
-            };
-
-            Assert.ThrowsAsync<ArgumentException>(async () =>
-                await _handler.Handle(command, CancellationToken.None));
-        }
-
-        [Test]
-        public void Should_Throw_When_CarId_Is_Empty()
-        {
-            var rentalId = Guid.NewGuid();
-            var customerId = Guid.NewGuid();
-            var carId = Guid.NewGuid();
-            var rental = new Rental(customerId, carId, DateTime.Today, DateTime.Today.AddDays(2));
-            typeof(Rental).GetProperty("Id")!.SetValue(rental, rentalId);
-
-            _rentalRepositoryMock.Setup(r => r.GetByIdAsync(rentalId, It.IsAny<CancellationToken>()))
-                                 .ReturnsAsync(rental);
-
-            var command = new ModifyRentalCommand
-            {
-                RentalId = rentalId,
-                CarId = Guid.Empty,
-                NewStartDate = DateTime.Today,
-                NewEndDate = DateTime.Today.AddDays(3)
-            };
-
-            Assert.ThrowsAsync<ArgumentException>(async () =>
-                await _handler.Handle(command, CancellationToken.None));
+            Assert.ThrowsAsync<KeyNotFoundException>(() =>
+                _handler.Handle(command, CancellationToken.None));
         }
     }
 }

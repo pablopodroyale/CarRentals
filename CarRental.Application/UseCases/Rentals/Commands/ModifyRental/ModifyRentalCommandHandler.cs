@@ -1,29 +1,33 @@
 ﻿using CarRental.Application.Interfaces;
+using CarRental.Domain.Interfaces;
 using MediatR;
 
 namespace CarRental.Application.UseCases.Rentals.Commands.ModifyRental
 {
     public class ModifyRentalCommandHandler : IRequestHandler<ModifyRentalCommand, Unit>
     {
-        private readonly IRentalRepository _repository;
+        private readonly IRentalService _rentalService;
         private readonly ICarRepository _carRepository;
 
-        public ModifyRentalCommandHandler(IRentalRepository repository, ICarRepository carRepository)
+        public ModifyRentalCommandHandler(IRentalService rentalService, ICarRepository carRepository)
         {
-            _repository = repository;
+            _rentalService = rentalService;
             _carRepository = carRepository;
         }
 
         public async Task<Unit> Handle(ModifyRentalCommand request, CancellationToken cancellationToken)
         {
-            var rental = await _repository.GetByIdAsync(request.RentalId, cancellationToken);
-            if (rental == null)
-                throw new KeyNotFoundException("Rental not found");
+            var car = await _carRepository.GetByIdAsync(request.CarId, cancellationToken);
+            if (car == null)
+                throw new KeyNotFoundException("Car not found");
 
-            rental.ModifyDates(request.NewStartDate, request.NewEndDate);
-            rental.ChangeCar(request.CarId);
-
-            await _repository.SaveChangesAsync(cancellationToken);
+            await _rentalService.UpdateAsync(
+                request.RentalId,
+                request.NewStartDate,
+                request.NewEndDate,
+                car,
+                cancellationToken
+            );
 
             return Unit.Value;
         }

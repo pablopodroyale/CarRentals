@@ -14,6 +14,14 @@ namespace CarRental.Infrastructure.Repositories
             _context = context;
         }
 
+            public async Task<List<Rental>> GetByCarIdAsync(Guid carId, CancellationToken cancellationToken)
+            {
+                return await _context.Rentals.Where(x => x.Car.Id == carId)
+                                             .Include(x => x.Car)
+                                             .Include(x => x.Customer)
+                                             .ToListAsync();
+            }
+
         public async Task<Rental?> GetByIdAsync(Guid id, CancellationToken cancellationToken)
         {
             return await _context.Rentals.FirstOrDefaultAsync(r => r.Id == id, cancellationToken);

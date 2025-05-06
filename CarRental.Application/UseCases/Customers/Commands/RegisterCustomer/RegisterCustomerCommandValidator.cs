@@ -6,11 +6,11 @@ namespace CarRental.Application.UseCases.Customers.Commands.RegisterCustomer
     {
         public RegisterCustomerCommandValidator()
         {
-            RuleFor(x => x.FullName)
+            RuleFor(x => x.Email)
                 .NotEmpty().WithMessage("Full name is required")
                 .MaximumLength(100);
 
-            RuleFor(x => x.Address)
+            RuleFor(x => x.Password)
                 .NotEmpty().WithMessage("Address is required")
                 .MaximumLength(200);
         }

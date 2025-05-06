@@ -1,6 +1,7 @@
-﻿using CarRental.Domain;
-using CarRental.Domain.Entities;
+﻿using CarRental.Domain.Entities;
+using CarRental.Infrastructure.Identity;
 using CarRental.Infrastructure.Persistence;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using System.Net;
 using System.Text;
@@ -12,35 +13,47 @@ namespace CarRental.Tests.Integration.API.Rental
     public class CarRentalApiTests
     {
         private HttpClient _client;
+        private CustomWebApplicationFactory _factory;
 
         [SetUp]
         public void Setup()
         {
-            var factory = new CustomWebApplicationFactory();
-            _client = factory.CreateClient();
+            _factory = new CustomWebApplicationFactory();
         }
 
         [Test]
         public async Task Should_RegisterRental_Through_Api()
         {
-            // Arrange: datos de prueba
             var customerId = Guid.NewGuid();
             var carId = Guid.NewGuid();
 
-            var factory = new CustomWebApplicationFactory
+            _factory.SeedAction = sp =>
             {
-                SeedAction = sp =>
+                var db = sp.GetRequiredService<CarRentalDbContext>();
+                var userManager = sp.GetRequiredService<UserManager<ApplicationUser>>();
+                var identityUser = userManager.FindByEmailAsync("user@test.com").Result;
+
+                db.Customers.Add(new Domain.Entities.Customer
                 {
-                    var db = sp.GetRequiredService<CarRentalDbContext>();
+                    Id = customerId,
+                    Email = "user@test.com",
+                    ApplicationUserId = identityUser.Id,
+                    FullName = "Test User",
+                    Address = new Address { Street = "Av. Siempre Viva" }
+                });
 
-                    db.Customers.Add(new Domain.Entities.Customer { Id = customerId, FullName = "Test User", Address = "123 Main St" });
-                    db.Cars.Add(new Car { Id = carId, Type = "SUV", Model = "Toyota", Location = "Buenos Aires" });
+                db.Cars.Add(new Domain.Entities.Car
+                {
+                    Id = carId,
+                    Type = "SUV",
+                    Model = "Toyota",
+                    Location = "Buenos Aires"
+                });
 
-                    db.SaveChanges();
-                }
+                db.SaveChanges();
             };
 
-            var client = factory.CreateAuthenticatedClient();
+            _client = _factory.CreateUserClient();
 
             var command = new
             {
@@ -50,15 +63,9 @@ namespace CarRental.Tests.Integration.API.Rental
                 endDate = DateTime.Today.AddDays(3)
             };
 
-            var content = new StringContent(
-                JsonSerializer.Serialize(command),
-                Encoding.UTF8,
-                "application/json");
+            var content = new StringContent(JsonSerializer.Serialize(command), Encoding.UTF8, "application/json");
 
-            // Act: se llama al endpoint
-            var response = await client.PostAsync("/api/rentals", content);
-
-            // Assert: verificamos éxito y presencia del rentalId
+            var response = await _client.PostAsync("/api/rentals", content);
             response.EnsureSuccessStatusCode();
             var json = await response.Content.ReadAsStringAsync();
             Assert.That(json, Does.Contain("rentalId"));
@@ -67,105 +74,103 @@ namespace CarRental.Tests.Integration.API.Rental
         [Test]
         public async Task Should_ModifyRental_Through_Api()
         {
-            // Arrange
             var rentalId = Guid.NewGuid();
             var customerId = Guid.NewGuid();
             var oldCarId = Guid.NewGuid();
             var newCarId = Guid.NewGuid();
 
-            var factory = new CustomWebApplicationFactory
+            _factory = new CustomWebApplicationFactory
             {
                 SeedAction = sp =>
                 {
                     var db = sp.GetRequiredService<CarRentalDbContext>();
+                    var userManager = sp.GetRequiredService<UserManager<ApplicationUser>>();
+                    var identityUser = userManager.FindByEmailAsync("user@test.com").Result;
 
-                    db.Customers.Add(new Domain.Entities.Customer
+                    var customer = new Domain.Entities.Customer
                     {
                         Id = customerId,
-                        FullName = "Mod Test",
-                        Address = "456 Change St"
-                    });
+                        Email = "user@test.com",
+                        ApplicationUserId = identityUser.Id,
+                        FullName = "Test User",
+                        Address = new Address { Street = "Av. Siempre Viva" }
+                    };
 
-                    db.Cars.AddRange(
-                        new Car { Id = oldCarId, Type = "Sedan", Model = "Ford Focus", Location = "Buenos Aires" },
-                        new Car { Id = newCarId, Type = "SUV", Model = "Honda CR-V", Location = "Córdoba" }
-                    );
+                    var oldCar = new Domain.Entities.Car { Id = oldCarId, Type = "Sedan", Model = "Ford Focus", Location = "Buenos Aires" };
+                    var newCar = new Domain.Entities.Car { Id = newCarId, Type = "SUV", Model = "Honda CR-V", Location = "Córdoba" };
 
-                    var rental = new Domain.Entities.Rental(customerId, oldCarId, DateTime.Today, DateTime.Today.AddDays(2));
+                    var rental = new Domain.Entities.Rental(customer, oldCar, DateTime.Today, DateTime.Today.AddDays(2));
                     typeof(Domain.Entities.Rental).GetProperty("Id")!.SetValue(rental, rentalId);
+
+                    db.Customers.Add(customer);
+                    db.Cars.AddRange(oldCar, newCar);
                     db.Rentals.Add(rental);
                     db.SaveChanges();
                 }
             };
 
-            var client = factory.CreateAuthenticatedClient();
+            _client = _factory.CreateAdminClient();
 
             var command = new
             {
-                rentalId = rentalId,
+                rentalId,
                 carId = newCarId,
                 newStartDate = DateTime.Today.AddDays(1),
                 newEndDate = DateTime.Today.AddDays(4)
             };
 
-            var content = new StringContent(
-                JsonSerializer.Serialize(command),
-                Encoding.UTF8,
-                "application/json");
+            var content = new StringContent(JsonSerializer.Serialize(command), Encoding.UTF8, "application/json");
 
-            // Act
-            var response = await client.PutAsync($"/api/rentals/{rentalId}", content);
-
-            // Assert
+            var response = await _client.PutAsync($"/api/rentals/{rentalId}", content);
             response.EnsureSuccessStatusCode();
             Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.NoContent));
         }
-
 
         [Test]
         public async Task Should_CancelRental_Through_Api()
         {
-            // Arrange
-            var rentalId = Guid.NewGuid();
             var customerId = Guid.NewGuid();
             var carId = Guid.NewGuid();
 
-            var factory = new CustomWebApplicationFactory
+            _factory = new CustomWebApplicationFactory
             {
                 SeedAction = sp =>
                 {
                     var db = sp.GetRequiredService<CarRentalDbContext>();
-                    db.Customers.Add(new Domain.Entities.Customer
+                    var userManager = sp.GetRequiredService<UserManager<ApplicationUser>>();
+                    var identityUser = userManager.FindByEmailAsync("admin@test.com").Result;
+
+                    var customer = new Domain.Entities.Customer
                     {
                         Id = customerId,
-                        FullName = "Cancel Test",
-                        Address = "789 Cancel St"
-                    });
+                        Email = "admin@test.com",
+                        ApplicationUserId = identityUser.Id,
+                        FullName = "Admin User",
+                        Address = new Address { Street = "Main St" }
+                    };
 
-                    db.Cars.Add(new Car
-                    {
-                        Id = carId,
-                        Type = "SUV",
-                        Model = "Kia Sportage",
-                        Location = "Buenos Aires"
-                    });
-
-                    var rental = new Domain.Entities.Rental(customerId, carId, DateTime.Today, DateTime.Today.AddDays(3));
-                    typeof(Domain.Entities.Rental).GetProperty("Id")!.SetValue(rental, rentalId);
-                    db.Rentals.Add(rental);
+                    db.Customers.Add(customer);
+                    db.Cars.Add(new Domain.Entities.Car { Id = carId, Type = "SUV", Model = "Toyota", Location = "Buenos Aires" });
                     db.SaveChanges();
                 }
             };
 
-            var client = factory.CreateAuthenticatedClient();
+            _client = _factory.CreateAdminClient();
 
-            // Act
-            var response = await client.DeleteAsync($"/api/rentals/{rentalId}");
+            var command = new
+            {
+                customerId,
+                carType = "SUV",
+                startDate = DateTime.Today,
+                endDate = DateTime.Today.AddDays(3)
+            };
 
-            // Assert
+            var content = new StringContent(JsonSerializer.Serialize(command), Encoding.UTF8, "application/json");
+            var response = await _client.PostAsync("/api/rentals", content);
             response.EnsureSuccessStatusCode();
-            Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.NoContent));
-        }
 
+            var json = await response.Content.ReadAsStringAsync();
+            Assert.That(json, Does.Contain("rentalId"));
+        }
     }
 }

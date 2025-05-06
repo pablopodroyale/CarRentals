@@ -19,12 +19,19 @@ namespace CarRental.Infrastructure.Repositories
         {
             var conflictingCarIds = _context.Rentals
               .Where(r => r.EndDate >= start && r.StartDate <= end)
-              .Select(r => r.CarId)
+              .Select(r => r.Car.Id)
               .ToList();
 
             return await _context.Cars
                 .Where(c => c.Type == type && !conflictingCarIds.Contains(c.Id))
                 .ToListAsync();
+        }
+
+        public async Task<Car> GetByIdAsync(Guid carId, CancellationToken cancellationToken)
+        {
+            return await _context.Cars?
+               .Include(c => c.Services)
+               .FirstOrDefaultAsync(c => c.Id == carId, cancellationToken);
         }
     }
 }

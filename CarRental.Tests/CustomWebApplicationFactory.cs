@@ -15,6 +15,7 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
 
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
+        builder.UseEnvironment("Testing");
         builder.ConfigureServices(services =>
         {
             var descriptor = services.SingleOrDefault(
@@ -35,23 +36,46 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
             db.Database.EnsureDeleted();
             db.Database.EnsureCreated();
 
-            // Crear usuario por defecto para autenticación
             var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
-            var testUser = new ApplicationUser { UserName = "testuser@example.com", Email = "testuser@example.com" };
-            userManager.CreateAsync(testUser, "Password123!").Wait();
+            var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+            // Crear roles si no existen
+            if (!roleManager.RoleExistsAsync("User").Result)
+                roleManager.CreateAsync(new IdentityRole("User")).Wait();
+
+            if (!roleManager.RoleExistsAsync("Admin").Result)
+                roleManager.CreateAsync(new IdentityRole("Admin")).Wait();
+
+            // Crear usuario con rol User
+            var user = new ApplicationUser
+            {
+                UserName = "user@test.com",
+                Email = "user@test.com"
+            };
+
+            userManager.CreateAsync(user, "Password123!").Wait();
+            userManager.AddToRoleAsync(user, "User").Wait();
+
+            // Crear usuario con rol Admin
+            var admin = new ApplicationUser
+            {
+                UserName = "admin@test.com",
+                Email = "admin@test.com"
+            };
+            userManager.CreateAsync(admin, "Password123!").Wait();
+            userManager.AddToRoleAsync(admin, "Admin").Wait();
 
             SeedAction?.Invoke(scope.ServiceProvider);
         });
     }
 
-    // Client con token
-    public HttpClient CreateAuthenticatedClient()
+    public HttpClient CreateAuthenticatedClient(string email, string password)
     {
         var client = CreateClient();
         var loginRequest = new
         {
-            email = "testuser@example.com",
-            password = "Password123!"
+            email,
+            password
         };
 
         var content = new StringContent(JsonSerializer.Serialize(loginRequest), Encoding.UTF8, "application/json");
@@ -64,4 +88,11 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
         client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
         return client;
     }
+
+    // Accesos rápidos
+    public HttpClient CreateUserClient() =>
+        CreateAuthenticatedClient("user@test.com", "Password123!");
+
+    public HttpClient CreateAdminClient() =>
+        CreateAuthenticatedClient("admin@test.com", "Password123!");
 }

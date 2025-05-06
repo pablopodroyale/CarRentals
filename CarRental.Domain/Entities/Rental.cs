@@ -3,22 +3,22 @@
 public class Rental
 {
     public Guid Id { get; private set; }
-    public Guid CustomerId { get; private set; }
-    public Guid CarId { get; private set; }
+    public Customer Customer { get; private set; }
+    public Car Car { get; private set; }
     public DateTime StartDate { get; private set; }
     public DateTime EndDate { get; private set; }
     public bool IsCanceled { get; private set; }
 
     private Rental() { }
 
-    public Rental(Guid customerId, Guid carId, DateTime start, DateTime end)
+    public Rental(Customer customer, Car car, DateTime start, DateTime end)
     {
         if (end <= start)
             throw new ArgumentException("End date must be after start date");
 
         Id = Guid.NewGuid();
-        CustomerId = customerId;
-        CarId = carId;
+        Customer = customer;
+        Car = car;
         StartDate = start;
         EndDate = end;
     }
@@ -32,12 +32,12 @@ public class Rental
         EndDate = newEndDate;
     }
 
-    public void ChangeCar(Guid newCarId)
+    public void ChangeCar(Car newCar)
     {
-        if (newCarId == Guid.Empty)
-            throw new ArgumentException("Invalid car ID.");
+        if (newCar == null)
+            throw new ArgumentException("Invalid car");
 
-        CarId = newCarId;
+        Car = newCar;
     }
 
     public void Cancel()

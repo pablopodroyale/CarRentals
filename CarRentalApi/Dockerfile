@@ -11,19 +11,23 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["CarRentalSolution/CarRentalSolution.csproj", "CarRentalSolution/"]
-RUN dotnet restore "./CarRentalSolution/CarRentalSolution.csproj"
+COPY ["CarRentalApi/CarRentalApi.csproj", "CarRentalApi/"]
+COPY ["CarRental.Application/CarRental.Application.csproj", "CarRental.Application/"]
+COPY ["CarRental.Domain/CarRental.Domain.csproj", "CarRental.Domain/"]
+COPY ["CarRental.Shared/CarRental.Shared.csproj", "CarRental.Shared/"]
+COPY ["CarRental.Infrastructure/CarRental.Infrastructure.csproj", "CarRental.Infrastructure/"]
+RUN dotnet restore "./CarRentalApi/CarRentalApi.csproj"
 COPY . .
-WORKDIR "/src/CarRentalSolution"
-RUN dotnet build "./CarRentalSolution.csproj" -c $BUILD_CONFIGURATION -o /app/build
+WORKDIR "/src/CarRentalApi"
+RUN dotnet build "./CarRentalApi.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # This stage is used to publish the service project to be copied to the final stage
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./CarRentalSolution.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./CarRentalApi.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 # This stage is used in production or when running from VS in regular mode (Default when not using the Debug configuration)
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "CarRentalSolution.dll"]
+ENTRYPOINT ["dotnet", "CarRentalApi.dll"]

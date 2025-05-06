@@ -22,7 +22,27 @@ namespace CarRental.Tests.Application.UseCases.Rentals.Commands.CancelRental
         [Test]
         public async Task Should_CancelRental_When_RentalExists()
         {
-            var rental = new Rental(customerId: Guid.NewGuid(), carId: Guid.NewGuid(), start: DateTime.Today, end: DateTime.Today.AddDays(1));
+            var customer = new Customer
+            {
+                Id = Guid.NewGuid(),
+                FullName = "John Doe",
+                Email = "john@example.com",
+                ApplicationUserId = "user-123",
+                Address = new Address
+                {
+                    Street = "Main St",
+                }
+            };
+
+            var car = new Car
+            {
+                Id = Guid.NewGuid(),
+                Type = "SUV",
+                Model = "Toyota RAV4",
+                Location = "EZE"
+            };
+
+            var rental = new Rental(customer, car, DateTime.Today, DateTime.Today.AddDays(1));
 
             _mockRepository
                 .Setup(repo => repo.GetByIdAsync(rental.Id, It.IsAny<CancellationToken>()))
@@ -37,22 +57,20 @@ namespace CarRental.Tests.Application.UseCases.Rentals.Commands.CancelRental
             var result = await _handler.Handle(command, CancellationToken.None);
 
             Assert.That(result, Is.EqualTo(Unit.Value));
+            Assert.That(rental.IsCanceled, Is.True);
         }
-
 
         [Test]
         public void Should_Throw_When_RentalNotFound()
         {
-            // Arrange
             var rentalId = Guid.NewGuid();
 
             _mockRepository
                 .Setup(repo => repo.GetByIdAsync(rentalId, It.IsAny<CancellationToken>()))
-                .ReturnsAsync((Rental)null!); 
+                .ReturnsAsync((Rental)null!);
 
             var command = new CancelRentalCommand { RentalId = rentalId };
 
-            // Act & Assert
             var ex = Assert.ThrowsAsync<KeyNotFoundException>(() =>
                 _handler.Handle(command, CancellationToken.None)
             );
