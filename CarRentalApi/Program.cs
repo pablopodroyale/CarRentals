@@ -15,24 +15,57 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
+
 builder.Configuration
     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
     .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true);
-// --- Servicios ---
 
+// --- Servicios principales ---
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+
+// --- Swagger + JWT Bearer Auth ---
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "CarRental API", Version = "v1" });
+
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        Scheme = "Bearer",
+        BearerFormat = "JWT",
+        In = ParameterLocation.Header,
+        Description = "Ingrese 'Bearer' seguido del token JWT. Ej: Bearer eyJhbGciOiJIUzI1NiIs..."
+    });
+
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            Array.Empty<string>()
+        }
+    });
+});
 
 // --- EF Core ---
 builder.Services.AddDbContext<CarRentalDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection"),
-        x => x.MigrationsAssembly("CarRental.Infrastructure") 
+        x => x.MigrationsAssembly("CarRental.Infrastructure")
     ));
+
 // --- Identity + JWT ---
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddRoles<IdentityRole>()
@@ -71,17 +104,17 @@ builder.Services.AddScoped<IRentalService, RentalService>();
 builder.Services.AddScoped<ICarRepository, CarRepository>();
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<IRentalRepository, RentalRepository>();
-builder.Services.AddValidatorsFromAssemblyContaining<LoginDtoValidator>();
 builder.Services.AddScoped<IRentalStatisticsService, RentalStatisticsService>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddScoped<ICarService, CarService>();
 builder.Services.AddScoped<IRentalRule, CarAvailabilityRule>();
 builder.Services.AddScoped<IRentalRule, CarServiceConflictRule>();
 builder.Services.AddScoped<IRentalRule, ValidDateRangeRule>();
-//Email
-builder.Services.AddSingleton<IEmailQueueService, EmailQueueService>();
-builder.Services.AddSingleton<IEmailSender, EmailSenderService>();
-builder.Services.AddHostedService<EmailBackgroundService>();
+builder.Services.AddValidatorsFromAssemblyContaining<LoginDtoValidator>();
+
+// --- Email + Durable Functions ---
+builder.Services.AddHttpClient(); // para DurableEmailDispatcherService
+builder.Services.AddScoped<IEmailDispatcherService, DurableEmailDispatcherService>();
 builder.Services.AddMemoryCache();
 builder.Configuration.AddEnvironmentVariables();
 
@@ -97,43 +130,34 @@ if (app.Environment.IsDevelopment() || app.Environment.EnvironmentName == "Docke
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthentication();
 app.UseAuthorization();
-
 app.MapControllers();
 
-//Seed Users
-//using (var scope = app.Services.CreateScope())
-//{
-//    var services = scope.ServiceProvider;
-//    await DbInitializer.SeedRolesAndUsersAsync(services);
-//}
+// --- Seed inicial de roles y usuarios ---
 if (!app.Environment.IsEnvironment("Testing"))
 {
-    using (var scope = app.Services.CreateScope())
+    using var scope = app.Services.CreateScope();
+    var context = scope.ServiceProvider.GetRequiredService<CarRentalDbContext>();
+    var retry = 10;
+    while (retry > 0)
     {
-        var context = scope.ServiceProvider.GetRequiredService<CarRentalDbContext>();
-        var retry = 10;
-        while (retry > 0)
+        try
         {
-            try
-            {
-                context.Database.Migrate();
-                await DbInitializer.SeedRolesAndUsersAsync(scope.ServiceProvider);
-                break;
-            }
-            catch (Exception ex)
-            {
-                retry--;
-                Console.WriteLine($" Esperando que SQL Server esté listo... Retries left: {retry}. Error: {ex.Message}");
-                await Task.Delay(3000);
-            }
+            context.Database.Migrate();
+            await DbInitializer.SeedRolesAndUsersAsync(scope.ServiceProvider);
+            break;
+        }
+        catch (Exception ex)
+        {
+            retry--;
+            Console.WriteLine($" Esperando que SQL Server esté listo... Retries left: {retry}. Error: {ex.Message}");
+            await Task.Delay(3000);
         }
     }
 }
 
 app.Run();
 
-// Necesary for WebApplicationFactory in tests
+// Necesario para tests
 public partial class Program { }

@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CarRental.EmailFunctions\CarRental.EmailFunctions.csproj" />
     <ProjectReference Include="..\CarRental.Infrastructure\CarRental.Infrastructure.csproj" />
     <ProjectReference Include="..\CarRentalApi\CarRentalApi.csproj" />
   </ItemGroup>

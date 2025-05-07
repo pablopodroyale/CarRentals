@@ -5,7 +5,12 @@
       {
         "Path": "CarRentalApi\\CarRentalApi.csproj",
         "Action": "Start",
-        "DebugTarget": "Container (Dockerfile)"
+        "DebugTarget": "CarRentalSolution"
+      },
+      {
+        "Path": "CarRental.EmailFunctions\\CarRental.EmailFunctions.csproj",
+        "Action": "Start",
+        "DebugTarget": "CarRental.EmailFunctions"
       }
     ]
   }

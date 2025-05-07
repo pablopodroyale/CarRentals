@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace CarRental.Domain.Interfaces
 {
-    public interface IEmailQueueService
+    public interface IEmailDispatcherService
     {
-        void EnqueueEmail(string to, string subject, string body);
+        Task SendConfirmationEmailAsync(string to, string subject, string body);
     }
 }
