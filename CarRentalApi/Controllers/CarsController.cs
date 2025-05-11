@@ -25,5 +25,12 @@ namespace CarRentalApi.Controllers
             var result = await _mediator.Send(new GetUpcomingServicesQuery());
             return Ok(result);
         }
+
+        [HttpGet("available")]
+        public async Task<IActionResult> GetAvailableCars([FromQuery] GetAvailableCarsQuery query)
+        {
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
     }
 }

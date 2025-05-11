@@ -1,4 +1,5 @@
-﻿using CarRental.Domain.Interfaces;
+﻿using CarRental.Domain.Entities;
+using CarRental.Domain.Interfaces;
 using CarRental.Infrastructure.Persistence;
 using CarRental.Shared.DTOs.Car;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +14,38 @@ namespace CarRental.Infrastructure.Services
         {
             _context = context;
         }
+
+        public async Task<List<Car>> GetAvailableCarsAsync(
+                            DateTime startDate,
+                            DateTime endDate,
+                            string? carType,
+                            string? model,
+                            string? location, // <- que también puede ser opcional
+                            CancellationToken cancellationToken)
+        {
+            var query = _context.Cars.AsQueryable();
+
+            if (!string.IsNullOrEmpty(carType))
+                query = query.Where(c => c.Type == carType);
+
+            if (!string.IsNullOrEmpty(model))
+                query = query.Where(c => c.Model == model);
+
+            if (!string.IsNullOrEmpty(location))
+                query = query.Where(c => c.Location == location);
+
+            query = query.Where(c =>
+                !_context.Rentals.Any(r =>
+                    r.Car.Id == c.Id &&
+                    !r.IsCanceled &&
+                    r.StartDate < endDate &&
+                    r.EndDate > startDate
+                )
+            );
+
+            return await query.ToListAsync(cancellationToken);
+        }
+
 
         public async Task<List<UpcomingServiceCarDto>> GetCarsWithServiceInNextTwoWeeksAsync()
         {

@@ -127,7 +127,7 @@ public class RegisterRentalIntegrationTests
 
         // Act & Assert
         var ex = Assert.ThrowsAsync<NoCarAvailableException>(() =>
-            useCase.ExecuteAsync(customer.Id, "SUV", DateTime.Today, DateTime.Today.AddDays(2), cancellationToken));
+            useCase.ExecuteAsync(customer.Email, "SUV", DateTime.Today, DateTime.Today.AddDays(2), cancellationToken));
 
         Assert.That(ex!.Message, Is.EqualTo("No car available for the selected dates."));
     }

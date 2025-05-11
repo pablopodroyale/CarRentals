@@ -16,7 +16,7 @@ namespace CarRental.Infrastructure.Services
             _customerRepository = customerRepository;
             _userManager = userManager;
         }
-        public async Task<CustomerDto> GetAsync(Guid customerID)
+        public async Task<CustomerDto> GetAsync(string customerID)
         {
             var customer = await _customerRepository.GetAsync(customerID);
             if (customer == null)

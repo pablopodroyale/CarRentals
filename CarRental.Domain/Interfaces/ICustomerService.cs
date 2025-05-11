@@ -5,7 +5,7 @@ namespace CarRental.Infrastructure.Services
 {
     public interface ICustomerService
     {
-        Task<CustomerDto> GetAsync(Guid customerID);
+        Task<CustomerDto> GetAsync(string customerID);
         Task<Guid> PostAsync(CustomerDto customer, CancellationToken cancellationToken);
     }
 }

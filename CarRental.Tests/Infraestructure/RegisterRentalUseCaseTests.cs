@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using CarRental.Application.Interfaces;
+﻿using CarRental.Application.Interfaces;
 using CarRental.Application.UseCases;
 using Moq;
-using NUnit.Framework;
 
 namespace CarRental.Tests.Infraestructure
 {
@@ -25,15 +20,15 @@ namespace CarRental.Tests.Infraestructure
         [Test]
         public async Task Should_RegisterRental_When_CarIsAvailable()
         {
-            var customerId = Guid.NewGuid();
+            var customerEmail = "user@test.com";
             var expectedRentalId = Guid.NewGuid();
             var cancellationToken = new CancellationToken();
 
             _rentalServiceMock
-                .Setup(s => s.RegisterRentalAsync(customerId, "SUV", It.IsAny<DateTime>(), It.IsAny<DateTime>(), cancellationToken))
+                .Setup(s => s.RegisterRentalAsync(customerEmail, "Pickup", "Toyota Hilux", It.IsAny<DateTime>(), It.IsAny<DateTime>(), cancellationToken))
                 .ReturnsAsync(expectedRentalId);
 
-            var rentalId = await _useCase.ExecuteAsync(customerId, "SUV", DateTime.Today, DateTime.Today.AddDays(3), cancellationToken);
+            var rentalId = await _useCase.ExecuteAsync(customerEmail, "Pickup", "Toyota Hilux", DateTime.Today, DateTime.Today.AddDays(3), cancellationToken);
 
             Assert.That(rentalId, Is.EqualTo(expectedRentalId));
         }
@@ -41,15 +36,15 @@ namespace CarRental.Tests.Infraestructure
         [Test]
         public void Should_Throw_When_NoCarAvailable()
         {
-            var customerId = Guid.NewGuid();
+            var customerEmail = "user@test.com";
             var cancellationToken = new CancellationToken();
 
             _rentalServiceMock
-                .Setup(s => s.RegisterRentalAsync(customerId, "SUV", It.IsAny<DateTime>(), It.IsAny<DateTime>(), cancellationToken))
+                .Setup(s => s.RegisterRentalAsync(customerEmail, "SUV", "Kia Sportage", It.IsAny<DateTime>(), It.IsAny<DateTime>(), cancellationToken))
                 .ThrowsAsync(new Exception("No car available for selected dates"));
 
             var ex = Assert.ThrowsAsync<Exception>(async () =>
-                await _useCase.ExecuteAsync(customerId, "SUV", DateTime.Today, DateTime.Today.AddDays(3), cancellationToken));
+                await _useCase.ExecuteAsync(customerEmail, "SUV", "Kia Sportage", DateTime.Today, DateTime.Today.AddDays(3), cancellationToken));
 
             Assert.That(ex!.Message, Is.EqualTo("No car available for selected dates"));
         }
@@ -57,15 +52,15 @@ namespace CarRental.Tests.Infraestructure
         [Test]
         public void Should_Throw_When_CarIsInService()
         {
-            var customerId = Guid.NewGuid();
+            var customerEmail = "user@test.com";
             var cancellationToken = new CancellationToken();
 
             _rentalServiceMock
-                .Setup(s => s.RegisterRentalAsync(customerId, "Sedan", It.IsAny<DateTime>(), It.IsAny<DateTime>(), cancellationToken))
+                .Setup(s => s.RegisterRentalAsync(customerEmail, "Sedan", "Honda Civic", It.IsAny<DateTime>(), It.IsAny<DateTime>(), cancellationToken))
                 .ThrowsAsync(new Exception("Car in service"));
 
             var ex = Assert.ThrowsAsync<Exception>(async () =>
-                await _useCase.ExecuteAsync(customerId, "Sedan", DateTime.Today, DateTime.Today.AddDays(3), cancellationToken));
+                await _useCase.ExecuteAsync(customerEmail, "Sedan", "Honda Civic", DateTime.Today, DateTime.Today.AddDays(3), cancellationToken));
 
             Assert.That(ex!.Message, Is.EqualTo("Car in service"));
         }
@@ -73,15 +68,15 @@ namespace CarRental.Tests.Infraestructure
         [Test]
         public void Should_Throw_When_CarAlreadyRentedByAnotherCustomer()
         {
-            var customerId = Guid.NewGuid();
+            var customerEmail = "user@test.com";
             var cancellationToken = new CancellationToken();
 
             _rentalServiceMock
-                .Setup(s => s.RegisterRentalAsync(customerId, "Compact", It.IsAny<DateTime>(), It.IsAny<DateTime>(), cancellationToken))
+                .Setup(s => s.RegisterRentalAsync(customerEmail, "Compact", "Peugeot 208", It.IsAny<DateTime>(), It.IsAny<DateTime>(), cancellationToken))
                 .ThrowsAsync(new Exception("Car already rented"));
 
             var ex = Assert.ThrowsAsync<Exception>(async () =>
-                await _useCase.ExecuteAsync(customerId, "Compact", DateTime.Today, DateTime.Today.AddDays(3), cancellationToken));
+                await _useCase.ExecuteAsync(customerEmail, "Compact", "Peugeot 208", DateTime.Today, DateTime.Today.AddDays(3), cancellationToken));
 
             Assert.That(ex!.Message, Is.EqualTo("Car already rented"));
         }

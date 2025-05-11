@@ -26,6 +26,17 @@ builder.Configuration
 
 // --- Servicios principales ---
 builder.Services.AddControllers();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend", policy =>
+    {
+        policy.WithOrigins("http://localhost:4200") // tu app Angular
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials(); // opcional si usás auth con cookies/token
+    });
+});
+
 builder.Services.AddEndpointsApiExplorer();
 
 // --- Swagger + JWT Bearer Auth ---
@@ -130,6 +141,7 @@ if (app.Environment.IsDevelopment() || app.Environment.EnvironmentName == "Docke
 }
 
 app.UseHttpsRedirection();
+app.UseCors("AllowFrontend");
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();

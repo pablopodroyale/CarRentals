@@ -17,9 +17,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\CarRental.Shared\CarRental.Shared.csproj" />
   </ItemGroup>
 </Project>

@@ -22,10 +22,10 @@ namespace CarRental.Infrastructure.Repositories
             return customer.Id;
         }
 
-        public async Task<Customer> GetAsync(Guid customerID)
+        public async Task<Customer> GetAsync(string customerID)
         {
             return await _context.Customers.AsNoTracking()
-                                           .FirstOrDefaultAsync(x => x.Id == customerID);
+                                           .FirstOrDefaultAsync(x => x.Email == customerID);
         }
     }
 }

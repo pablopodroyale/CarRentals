@@ -1,4 +1,6 @@
 ﻿using CarRental.Application.UseCases.Rentals.Commands.RegisterRental;
+using NUnit.Framework.Internal;
+using static Microsoft.ApplicationInsights.MetricDimensionNames.TelemetryContext;
 
 namespace CarRental.Tests.Application.UseCases.Rentals
 {
@@ -18,7 +20,7 @@ namespace CarRental.Tests.Application.UseCases.Rentals
         {
             var command = new RegisterRentalCommand
             {
-                CustomerId = Guid.Empty,
+                CustomerId = "user@test.com",
                 CarType = "SUV",
                 StartDate = DateTime.Today,
                 EndDate = DateTime.Today.AddDays(2)
@@ -35,7 +37,7 @@ namespace CarRental.Tests.Application.UseCases.Rentals
         {
             var command = new RegisterRentalCommand
             {
-                CustomerId = Guid.NewGuid(),
+                CustomerId = "user@test.com",
                 CarType = "",
                 StartDate = DateTime.Today,
                 EndDate = DateTime.Today.AddDays(2)
@@ -52,7 +54,7 @@ namespace CarRental.Tests.Application.UseCases.Rentals
         {
             var command = new RegisterRentalCommand
             {
-                CustomerId = Guid.NewGuid(),
+                CustomerId = "user@test.com",
                 CarType = "SUV",
                 StartDate = DateTime.Today.AddDays(5),
                 EndDate = DateTime.Today
@@ -70,7 +72,7 @@ namespace CarRental.Tests.Application.UseCases.Rentals
             var now = DateTime.Today;
             var command = new RegisterRentalCommand
             {
-                CustomerId = Guid.NewGuid(),
+                CustomerId = "user@test.com",
                 CarType = "SUV",
                 StartDate = now,
                 EndDate = now
@@ -88,7 +90,7 @@ namespace CarRental.Tests.Application.UseCases.Rentals
         {
             var command = new RegisterRentalCommand
             {
-                CustomerId = Guid.NewGuid(),
+                CustomerId = "user@test.com",
                 CarType = "SUV",
                 StartDate = DateTime.Today,
                 EndDate = DateTime.Today.AddDays(3)

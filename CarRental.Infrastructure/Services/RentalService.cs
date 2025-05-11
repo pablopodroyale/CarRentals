@@ -1,6 +1,7 @@
 ﻿using CarRental.Application.Interfaces;
 using CarRental.Domain.Entities;
 using CarRental.Domain.Exceptions;
+using CarRental.Domain.Interfaces;
 using CarRental.Domain.Rules.Rental;
 using CarRental.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -8,17 +9,21 @@ using Microsoft.EntityFrameworkCore;
 public class RentalService : IRentalService
 {
     private readonly CarRentalDbContext _context;
+    private readonly ICustomerRepository _customerRepository;
     private readonly IEnumerable<IRentalRule> _rentalRules;
 
-    public RentalService(CarRentalDbContext context, IEnumerable<IRentalRule> rentalRules)
+    public RentalService(CarRentalDbContext context, IEnumerable<IRentalRule> rentalRules, ICustomerRepository customerRepository)
     {
         _context = context;
         _rentalRules = rentalRules;
+        _customerRepository = customerRepository;
     }
 
-    public async Task<Guid> RegisterRentalAsync(Guid customerId, string carType, DateTime start, DateTime end, CancellationToken cancellationToken)
+
+    public async Task<Guid> RegisterRentalAsync(string customerId, string carType, string model, DateTime startDate, DateTime endDate, CancellationToken cancellationToken)
     {
-        var customer = await _context.Customers.FindAsync(customerId);
+        var customer = await _customerRepository.GetAsync(customerId);
+        _context.Attach(customer);
         if (customer == null)
             throw new KeyNotFoundException("Customer not found");
 
@@ -27,19 +32,19 @@ public class RentalService : IRentalService
             .Include(c => c.Services)
             .Where(c =>
                 c.Type == carType &&
-                !c.Services.Any(s => s.Date >= start && s.Date <= end) &&
+                !c.Services.Any(s => s.Date >= startDate && s.Date <= endDate) &&
                 !_context.Rentals.Any(r =>
                     r.Car.Id == c.Id &&
                     !r.IsCanceled &&
-                    r.EndDate.AddDays(1) >= start &&
-                    r.StartDate <= end
+                    r.EndDate.AddDays(1) >= startDate &&
+                    r.StartDate <= endDate
                 )
             )
             .ToListAsync();
 
         foreach (var car in candidateCars)
         {
-            var rental = new Rental(customer, car, start, end);
+            var rental = new Rental(customer, car, startDate, endDate);
 
             try
             {

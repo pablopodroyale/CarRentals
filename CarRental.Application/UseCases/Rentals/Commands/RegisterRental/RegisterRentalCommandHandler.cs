@@ -26,6 +26,7 @@ namespace CarRental.Application.UseCases.Rentals.Commands.RegisterRental
             var rentalId = await _rentalService.RegisterRentalAsync(
                 request.CustomerId,
                 request.CarType,
+                request.Model,
                 request.StartDate,
                 request.EndDate,
                 cancellationToken);
