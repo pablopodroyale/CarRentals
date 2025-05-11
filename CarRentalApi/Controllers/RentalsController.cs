@@ -1,6 +1,7 @@
 ﻿using CarRental.Application.UseCases.Rentals.Commands.CancelRental;
 using CarRental.Application.UseCases.Rentals.Commands.ModifyRental;
 using CarRental.Application.UseCases.Rentals.Commands.RegisterRental;
+using CarRental.Application.UseCases.Rentals.Query.List;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -16,6 +17,16 @@ public class RentalsController : ControllerBase
     {
         _mediator = mediator;
     }
+
+    [HttpGet]
+    [Authorize(Roles = "User,Admin")]
+    public async Task<IActionResult> GetAll([FromQuery] string customerID)
+    {
+        var role = User.Identities.FirstOrDefault().Claims.ToArray()[2].Value;
+        var rentals = await _mediator.Send(new GetAllRentalsQuery(customerID, role));
+        return Ok(rentals);
+    }
+
 
     [HttpPost]
     [Authorize(Roles = "User,Admin")]

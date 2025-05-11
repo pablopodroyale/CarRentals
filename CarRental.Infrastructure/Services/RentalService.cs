@@ -4,6 +4,7 @@ using CarRental.Domain.Exceptions;
 using CarRental.Domain.Interfaces;
 using CarRental.Domain.Rules.Rental;
 using CarRental.Infrastructure.Persistence;
+using CarRental.Shared.DTOs.Rental;
 using Microsoft.EntityFrameworkCore;
 
 public class RentalService : IRentalService
@@ -11,14 +12,20 @@ public class RentalService : IRentalService
     private readonly CarRentalDbContext _context;
     private readonly ICustomerRepository _customerRepository;
     private readonly IEnumerable<IRentalRule> _rentalRules;
+    private readonly IRentalRepository _rentalRepository;
 
-    public RentalService(CarRentalDbContext context, IEnumerable<IRentalRule> rentalRules, ICustomerRepository customerRepository)
+    public RentalService(CarRentalDbContext context, IEnumerable<IRentalRule> rentalRules, ICustomerRepository customerRepository, IRentalRepository rentalRepository)
     {
         _context = context;
         _rentalRules = rentalRules;
         _customerRepository = customerRepository;
+        _rentalRepository = rentalRepository;
     }
 
+    public Task<List<RentalDto>> GetAllAsync(string customerID, string role, CancellationToken cancellationToken)
+    {
+        return _rentalRepository.GetAllAsync(customerID, role, cancellationToken);
+    }
 
     public async Task<Guid> RegisterRentalAsync(string customerId, string carType, string model, DateTime startDate, DateTime endDate, CancellationToken cancellationToken)
     {

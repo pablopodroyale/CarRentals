@@ -70,7 +70,7 @@ public class RegisterRentalIntegrationTests
         var rentalService = sp.GetRequiredService<IRentalService>();
         var useCase = new RegisterRentalUseCase(rentalService);
         CancellationToken cancellationToken = new CancellationToken();
-        var rentalId = await useCase.ExecuteAsync(_customerId, "SUV", DateTime.Today, DateTime.Today.AddDays(3), cancellationToken);
+        var rentalId = await useCase.ExecuteAsync(_customerId, "SUV", "", DateTime.Today, DateTime.Today.AddDays(3), cancellationToken);
         var rental = await db.Rentals.Include(r => r.Customer).FirstOrDefaultAsync(r => r.Id == rentalId);
 
         Assert.That(rental, Is.Not.Null);
@@ -127,7 +127,7 @@ public class RegisterRentalIntegrationTests
 
         // Act & Assert
         var ex = Assert.ThrowsAsync<NoCarAvailableException>(() =>
-            useCase.ExecuteAsync(customer.Email, "SUV", DateTime.Today, DateTime.Today.AddDays(2), cancellationToken));
+            useCase.ExecuteAsync(customer.Email, "SUV", "", DateTime.Today, DateTime.Today.AddDays(2), cancellationToken));
 
         Assert.That(ex!.Message, Is.EqualTo("No car available for the selected dates."));
     }
