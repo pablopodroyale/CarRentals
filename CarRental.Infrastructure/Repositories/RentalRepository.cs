@@ -36,6 +36,7 @@ namespace CarRental.Infrastructure.Repositories
                 FullName = r.Customer.FullName,
                 Address = r.Customer.Address.Street,
                 CarType = r.Car.Type,
+                CarId = r.Car.Id,
                 Model = r.Car.Model,
                 Location = r.Car.Location,
                 StartDate = r.StartDate,

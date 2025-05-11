@@ -23,8 +23,14 @@ namespace CarRental.Domain.Rules.Rental
         {
             List<Entities.Rental> rentals = await _rentalRepo.GetByCarIdAsync(rental.Car.Id, cancellationToken);
 
-            if (rentals.Any(r => !r.IsCanceled && r.EndDate.AddDays(1) >= rental.StartDate && r.StartDate <= rental.EndDate))
+            if (rentals.Any(r =>
+                r.Id != rental.Id && 
+                !r.IsCanceled &&
+                r.EndDate.AddDays(1) >= rental.StartDate &&
+                r.StartDate <= rental.EndDate))
+            {
                 throw new BusinessRentalRuleException("Car is already rented in the selected period.");
+            }
         }
     }
 

@@ -38,7 +38,7 @@ public class AuthController : ControllerBase
                 };
                 foreach (var role in roles)
                 {
-                    authClaims.Add(new Claim(ClaimTypes.Role, role));
+                    authClaims.Add(new Claim("role", role));
                 }
 
                 var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Key"]));

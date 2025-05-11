@@ -82,7 +82,14 @@ public class RentalService : IRentalService
             throw new KeyNotFoundException("Rental not found");
 
         // Simula los cambios para validación
-        var modifiedRental = new Rental(rental.Customer, newCar, newStartDate, newEndDate);
+        var modifiedRental = Rental.Rehydrate(
+                rental.Id,
+                rental.Customer,
+                newCar,
+                newStartDate,
+                newEndDate,
+                rental.IsCanceled
+        );
 
         foreach (var rule in _rentalRules)
             await rule.ValidateAsync(modifiedRental, cancellationToken);

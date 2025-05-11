@@ -45,4 +45,19 @@
             if (IsCanceled) throw new InvalidOperationException("Rental already canceled.");
             IsCanceled = true;
         }
-    }
+
+        public static Rental Rehydrate(Guid id, Customer customer, Car car, DateTime start, DateTime end, bool isCanceled = false)
+        {
+            var rental = new Rental
+            {
+                Id = id,
+                Customer = customer,
+                Car = car,
+                StartDate = start,
+                EndDate = end,
+                IsCanceled = isCanceled
+            };
+
+            return rental;
+        }
+}

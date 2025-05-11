@@ -13,6 +13,7 @@ namespace CarRental.Shared.DTOs.Rental
         public string FullName { get; set; } = default!;
         public string Address { get; set; } = default!;
         public string CarType { get; set; } = default!;
+        public Guid CarId { get; set; } = default!;
         public string Model { get; set; } = default!;
         public string Location { get; set; } = default!;
         public DateTime StartDate { get; set; }
