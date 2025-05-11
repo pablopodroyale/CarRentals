@@ -121,6 +121,7 @@ builder.Services.AddScoped<ICarService, CarService>();
 builder.Services.AddScoped<IRentalRule, CarAvailabilityRule>();
 builder.Services.AddScoped<IRentalRule, CarServiceConflictRule>();
 builder.Services.AddScoped<IRentalRule, ValidDateRangeRule>();
+builder.Services.AddScoped<IRentalRule, StartDateInFutureRule>();
 builder.Services.AddValidatorsFromAssemblyContaining<LoginDtoValidator>();
 
 // --- Email + Durable Functions ---
