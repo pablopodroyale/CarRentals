@@ -27,6 +27,7 @@ namespace CarRental.Infrastructure.Repositories
         {
             var query = _context.Rentals
                                 .Include(r => r.Customer)
+                                .Include(r => r.Customer.Address)
                                 .Include(r => r.Car)
                                 .AsQueryable();
 
