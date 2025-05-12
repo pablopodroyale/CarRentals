@@ -1,28 +1,31 @@
 ﻿using CarRental.Application.Interfaces;
 using CarRental.Domain.Entities;
 using CarRental.Domain.Interfaces;
+using CarRental.Infrastructure.Services;
 using MediatR;
 
 namespace CarRental.Application.UseCases.Customers.Commands.RegisterCustomer
 {
     public class RegisterCustomerCommandHandler : IRequestHandler<RegisterCustomerCommand, Guid>
     {
-        private readonly ICustomerRepository _repository;
-
-        public RegisterCustomerCommandHandler(ICustomerRepository repository)
+        //private readonly ICustomerRepository _repository;
+        private readonly ICustomerService _customerService;
+        public RegisterCustomerCommandHandler(ICustomerService customerService)
         {
-            _repository = repository;
+            _customerService = customerService;
         }
 
         public async Task<Guid> Handle(RegisterCustomerCommand request, CancellationToken cancellationToken)
         {
-            var customer = new Customer
+            var customer = new Shared.DTOs.Customer.CustomerDto
             {
-                FullName = request.FullName,
-                Address = request.Address
+                Email = request.Email,
+                Password = request.Password,
+                Address = request.Address,
+                FullName = request.FullName
             };
 
-            return await _repository.AddAsync(customer, cancellationToken);
+            return await _customerService.PostAsync(customer, cancellationToken);
         }
     }
 }

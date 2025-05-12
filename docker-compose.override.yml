@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  sqlserver:
+    ports:
+      - "1433:1433"
+    environment:
+      - SA_PASSWORD=Your_password123
+      - ACCEPT_EULA=Y
+    healthcheck:
+      test: ["CMD", "/opt/mssql-tools/bin/sqlcmd", "-S", "localhost", "-U", "sa", "-P", "Your_password123", "-Q", "select 1"]
+      interval: 10s
+      retries: 5

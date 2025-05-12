@@ -1,82 +1,104 @@
 ﻿using CarRental.Application.UseCases.Rentals.Commands.RegisterRental;
-using NUnit.Framework;
+using NUnit.Framework.Internal;
+using static Microsoft.ApplicationInsights.MetricDimensionNames.TelemetryContext;
 
 namespace CarRental.Tests.Application.UseCases.Rentals
 {
     [TestFixture]
     public class RegisterRentalCommandValidatorTests
     {
+        private RegisterRentalCommandValidator _validator;
+
+        [SetUp]
+        public void Setup()
+        {
+            _validator = new RegisterRentalCommandValidator();
+        }
+
         [Test]
         public void Should_Fail_When_CustomerId_Is_Empty()
         {
-            var validator = new RegisterRentalCommandValidator();
-
             var command = new RegisterRentalCommand
             {
-                CustomerId = Guid.Empty,
+                CustomerId = "", // ← Aquí está el fix
                 CarType = "SUV",
+                Model = "Toyota RAV4", // Incluí esto si es obligatorio en el validator
                 StartDate = DateTime.Today,
                 EndDate = DateTime.Today.AddDays(2)
             };
 
-            var result = validator.Validate(command);
+            var result = _validator.Validate(command);
 
             Assert.IsFalse(result.IsValid);
-            Assert.That(result.Errors.Any(e => e.PropertyName == "CustomerId"));
+            Assert.That(result.Errors.Any(e => e.PropertyName == nameof(command.CustomerId)));
         }
+
 
         [Test]
         public void Should_Fail_When_CarType_Is_Empty()
         {
-            var validator = new RegisterRentalCommandValidator();
-
             var command = new RegisterRentalCommand
             {
-                CustomerId = Guid.NewGuid(),
+                CustomerId = "user@test.com",
                 CarType = "",
                 StartDate = DateTime.Today,
                 EndDate = DateTime.Today.AddDays(2)
             };
 
-            var result = validator.Validate(command);
+            var result = _validator.Validate(command);
 
             Assert.IsFalse(result.IsValid);
-            Assert.That(result.Errors.Any(e => e.PropertyName == "CarType"));
+            Assert.That(result.Errors.Any(e => e.PropertyName == nameof(command.CarType)));
         }
 
         [Test]
-        public void Should_Fail_When_Dates_Are_Invalid()
+        public void Should_Fail_When_StartDate_Is_After_EndDate()
         {
-            var validator = new RegisterRentalCommandValidator();
-
             var command = new RegisterRentalCommand
             {
-                CustomerId = Guid.NewGuid(),
+                CustomerId = "user@test.com",
                 CarType = "SUV",
-                StartDate = DateTime.Today.AddDays(3),
+                StartDate = DateTime.Today.AddDays(5),
                 EndDate = DateTime.Today
             };
 
-            var result = validator.Validate(command);
+            var result = _validator.Validate(command);
 
             Assert.IsFalse(result.IsValid);
-            Assert.That(result.Errors.Any(e => e.PropertyName == "StartDate" || e.PropertyName == "EndDate"));
+            Assert.That(result.Errors.Any(e => e.PropertyName == nameof(command.StartDate)));
         }
 
         [Test]
-        public void Should_Pass_With_Valid_Data()
+        public void Should_Fail_When_Dates_Are_Same()
         {
-            var validator = new RegisterRentalCommandValidator();
-
+            var now = DateTime.Today;
             var command = new RegisterRentalCommand
             {
-                CustomerId = Guid.NewGuid(),
+                CustomerId = "user@test.com",
+                CarType = "SUV",
+                StartDate = now,
+                EndDate = now
+            };
+
+            _validator = new RegisterRentalCommandValidator();
+            var result = _validator.Validate(command);
+
+            Assert.IsFalse(result.IsValid);
+            Assert.That(result.Errors.Any(e => e.PropertyName == nameof(command.EndDate)));
+        }
+
+        [Test]
+        public void Should_Pass_With_Valid_Command()
+        {
+            var command = new RegisterRentalCommand
+            {
+                CustomerId = "user@test.com",
                 CarType = "SUV",
                 StartDate = DateTime.Today,
                 EndDate = DateTime.Today.AddDays(3)
             };
 
-            var result = validator.Validate(command);
+            var result = _validator.Validate(command);
 
             Assert.IsTrue(result.IsValid);
         }

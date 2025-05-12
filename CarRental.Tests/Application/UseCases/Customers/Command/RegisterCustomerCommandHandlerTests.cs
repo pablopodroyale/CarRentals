@@ -2,10 +2,12 @@
 using CarRental.Application.UseCases.Customers.Commands.RegisterCustomer;
 using CarRental.Domain.Entities;
 using CarRental.Domain.Interfaces;
+using CarRental.Infrastructure.Services;
+using CarRental.Shared.DTOs.Customer;
 using Moq;
 using NUnit.Framework;
 
-namespace CarRental.Tests.Application.UseCases.Customers
+namespace CarRental.Tests.Application.UseCases.Customers.Command
 {
     [TestFixture]
     public class RegisterCustomerCommandHandlerTests
@@ -15,17 +17,17 @@ namespace CarRental.Tests.Application.UseCases.Customers
         {
             // Arrange
             var fakeId = Guid.NewGuid();
-            var mockRepo = new Mock<ICustomerRepository>();
+            var userServiceMock = new Mock<ICustomerService>();
 
-            mockRepo.Setup(r => r.AddAsync(It.IsAny<Customer>(), It.IsAny<CancellationToken>()))
+            userServiceMock.Setup(r => r.PostAsync(It.IsAny<CustomerDto>(), It.IsAny<CancellationToken>()))
                     .ReturnsAsync(fakeId);
 
-            var handler = new RegisterCustomerCommandHandler(mockRepo.Object);
+            var handler = new RegisterCustomerCommandHandler(userServiceMock.Object);
 
             var command = new RegisterCustomerCommand
             {
-                FullName = "Juan Pérez",
-                Address = "Calle Falsa 123"
+                Email = "Juan Pérez",
+                Password = "Calle Falsa 123"
             };
 
             // Act
@@ -33,7 +35,7 @@ namespace CarRental.Tests.Application.UseCases.Customers
 
             // Assert
             Assert.That(result, Is.EqualTo(fakeId));
-            mockRepo.Verify(r => r.AddAsync(It.IsAny<Customer>(), It.IsAny<CancellationToken>()), Times.Once);
+            userServiceMock.Verify(r => r.PostAsync(It.IsAny<CustomerDto>(), It.IsAny<CancellationToken>()), Times.Once);
         }
     }
 }

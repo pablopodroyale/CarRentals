@@ -1,0 +1,786 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="4293a8ee-927a-4597-97f1-11b5a222b7a7" name="Usuario@DESKTOP-EC86G98 2025-05-12 10:53:35" runUser="DESKTOP-EC86G98\Usuario" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2025-05-12T10:53:35.1881290-03:00" queuing="2025-05-12T10:53:35.1881296-03:00" start="2025-05-12T10:53:33.7706949-03:00" finish="2025-05-12T10:53:41.1431586-03:00" />
+  <TestSettings name="default" id="ea22252c-67d7-412a-987e-203cb8603b25">
+    <Deployment runDeploymentRoot="Usuario_DESKTOP-EC86G98_2025-05-12_10_53_35" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="605d4740-d713-4b2a-b9a0-8f101308e72e" testId="06daa8aa-b515-d610-a99f-be75b818c7cb" testName="Should_Throw_Exception_When_Service_Fails" computerName="DESKTOP-EC86G98" duration="00:00:00.0043890" startTime="2025-05-12T10:53:35.0812088-03:00" endTime="2025-05-12T10:53:35.0855978-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="605d4740-d713-4b2a-b9a0-8f101308e72e" />
+    <UnitTestResult executionId="ed0d4ead-a5b6-42a5-a8a8-5cbab96369cf" testId="5156cb6a-c9a1-5d71-2df9-9f8359ca9696" testName="Should_RegisterRental_Through_Api" computerName="DESKTOP-EC86G98" duration="00:00:00.0531600" startTime="2025-05-12T10:53:40.0252599-03:00" endTime="2025-05-12T10:53:40.0784197-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ed0d4ead-a5b6-42a5-a8a8-5cbab96369cf">
+      <Output>
+        <StdOut>info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 0 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 3 entities to in-memory store.&#xD;
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]&#xD;
+      Failed to determine the https port for redirect.&#xD;
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="d583e795-6a13-477c-a9bd-a4bd58e1fc22" testId="e0360663-61cd-c956-2931-c1515baeeed0" testName="Should_ModifyRental_When_Valid" computerName="DESKTOP-EC86G98" duration="00:00:00.0069570" startTime="2025-05-12T10:53:40.0785781-03:00" endTime="2025-05-12T10:53:40.0855343-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d583e795-6a13-477c-a9bd-a4bd58e1fc22" />
+    <UnitTestResult executionId="ca5f113b-6f79-411e-8476-8e8984a6d945" testId="cae01742-638b-4866-3a55-ec7cb3b28054" testName="Should_Fail_When_CustomerId_Is_Empty" computerName="DESKTOP-EC86G98" duration="00:00:00.0004500" startTime="2025-05-12T10:53:35.1163961-03:00" endTime="2025-05-12T10:53:35.1168457-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ca5f113b-6f79-411e-8476-8e8984a6d945" />
+    <UnitTestResult executionId="5bfbdb60-8969-4ad1-ae3b-834cbaa173bc" testId="b2fbd933-0f62-f58f-91c9-0d20d0a1e367" testName="Should_Return_Correct_Utilization_Percentage_By_Car_Type" computerName="DESKTOP-EC86G98" duration="00:00:00.0055500" startTime="2025-05-12T10:53:35.1183950-03:00" endTime="2025-05-12T10:53:35.1239441-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5bfbdb60-8969-4ad1-ae3b-834cbaa173bc" />
+    <UnitTestResult executionId="774fca88-8b46-43cb-bdb9-d6ff9248f4cb" testId="9ae12858-8bfd-a140-3e57-7daecb233adc" testName="Should_Return_MostRentedCarType_Through_Api" computerName="DESKTOP-EC86G98" duration="00:00:00.0841269" startTime="2025-05-12T10:53:40.2061468-03:00" endTime="2025-05-12T10:53:40.2902733-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="774fca88-8b46-43cb-bdb9-d6ff9248f4cb">
+      <Output>
+        <StdOut>info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 0 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 7 entities to in-memory store.&#xD;
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]&#xD;
+      Failed to determine the https port for redirect.&#xD;
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="400cb935-4abf-46a8-a67f-3e70bb514887" testId="21c16782-ad22-c55c-3a26-35babad8ecbb" testName="Should_Return_UpcomingServiceCars" computerName="DESKTOP-EC86G98" duration="00:00:01.0170600" startTime="2025-05-12T10:53:38.6815048-03:00" endTime="2025-05-12T10:53:39.6985639-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="400cb935-4abf-46a8-a67f-3e70bb514887">
+      <Output>
+        <StdOut>info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 0 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]&#xD;
+      Failed to determine the https port for redirect.&#xD;
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="183606d0-e1f8-4f58-b75e-d39675cc05c2" testId="214c7fb2-f750-fb01-41c6-2086049e0e79" testName="Should_Throw_When_NoCarAvailable" computerName="DESKTOP-EC86G98" duration="00:00:00.0014180" startTime="2025-05-12T10:53:37.8431487-03:00" endTime="2025-05-12T10:53:37.8445669-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="183606d0-e1f8-4f58-b75e-d39675cc05c2" />
+    <UnitTestResult executionId="cc8793e0-0d43-49c1-9e81-893754446bf8" testId="5bbf7395-4aa2-d0ef-5da2-0ebb779e62ee" testName="Should_Fail_When_StartDate_Is_After_EndDate" computerName="DESKTOP-EC86G98" duration="00:00:00.0002630" startTime="2025-05-12T10:53:35.1178761-03:00" endTime="2025-05-12T10:53:35.1181387-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cc8793e0-0d43-49c1-9e81-893754446bf8" />
+    <UnitTestResult executionId="72d47281-7d2c-4d74-8cfc-d12b69b712ac" testId="f1077cdd-ea25-3c98-a5a3-798c2a2725ee" testName="Should_Throw_When_RentalNotFound" computerName="DESKTOP-EC86G98" duration="00:00:00.0013300" startTime="2025-05-12T10:53:35.0965945-03:00" endTime="2025-05-12T10:53:35.0979245-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="72d47281-7d2c-4d74-8cfc-d12b69b712ac" />
+    <UnitTestResult executionId="274d3647-5a1c-4b3a-a331-5d0ff71727a8" testId="1ccbaa31-cab6-d085-3eb3-befec12b4d12" testName="Should_Return_EmptyList_When_No_Cars_Are_Upcoming_For_Service" computerName="DESKTOP-EC86G98" duration="00:00:00.1042830" startTime="2025-05-12T10:53:34.8909232-03:00" endTime="2025-05-12T10:53:34.9951505-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="274d3647-5a1c-4b3a-a331-5d0ff71727a8" />
+    <UnitTestResult executionId="a50608b4-cbb9-4708-968a-3f46dff66a4c" testId="b38da856-df4b-5194-3ba2-8827fd29a133" testName="Should_Return_UpcomingServiceCars_From_CarService" computerName="DESKTOP-EC86G98" duration="00:00:00.0096140" startTime="2025-05-12T10:53:34.9964794-03:00" endTime="2025-05-12T10:53:35.0060936-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a50608b4-cbb9-4708-968a-3f46dff66a4c" />
+    <UnitTestResult executionId="c280fa4b-157d-48a0-b6ec-330cc4f4b430" testId="20dfbed4-1264-32fa-198e-2e61071e2a6e" testName="Should_Return_MostRentedCarType" computerName="DESKTOP-EC86G98" duration="00:00:00.0033260" startTime="2025-05-12T10:53:40.0871867-03:00" endTime="2025-05-12T10:53:40.0905127-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c280fa4b-157d-48a0-b6ec-330cc4f4b430" />
+    <UnitTestResult executionId="b8210111-9bc9-40ac-8b5a-e99859a33cb7" testId="b271cd0f-63e6-3b14-e756-fbf630886681" testName="Should_Return_UtilizationByType_Through_Api" computerName="DESKTOP-EC86G98" duration="00:00:00.0866529" startTime="2025-05-12T10:53:40.2902996-03:00" endTime="2025-05-12T10:53:40.3769523-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b8210111-9bc9-40ac-8b5a-e99859a33cb7">
+      <Output>
+        <StdOut>info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 0 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 7 entities to in-memory store.&#xD;
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]&#xD;
+      Failed to determine the https port for redirect.&#xD;
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+RESPONSE: [{"type":"SUV","percentageUsed":100},{"type":"Sedan","percentageUsed":100}]</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="f51c3de3-fe7c-4f4e-af06-eadf4b94657e" testId="867f12b4-2498-3114-2c38-fe998fb9aced" testName="Should_Register_Customer_When_Valid" computerName="DESKTOP-EC86G98" duration="00:00:00.0105000" startTime="2025-05-12T10:53:35.0706832-03:00" endTime="2025-05-12T10:53:35.0811832-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f51c3de3-fe7c-4f4e-af06-eadf4b94657e" />
+    <UnitTestResult executionId="8f6ac37a-f72c-4e93-8c62-78641ba2591c" testId="fb630980-ae91-f940-6bab-0ab9bd88ced9" testName="Should_Throw_When_CarAlreadyRentedByAnotherCustomer" computerName="DESKTOP-EC86G98" duration="00:00:00.0014989" startTime="2025-05-12T10:53:37.8401911-03:00" endTime="2025-05-12T10:53:37.8416901-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8f6ac37a-f72c-4e93-8c62-78641ba2591c" />
+    <UnitTestResult executionId="ae076cee-a734-4206-953e-0372336f9213" testId="497ba41c-bc16-0bf6-dd9e-79e39d24de23" testName="Should_Throw_When_CarAlreadyReserved" computerName="DESKTOP-EC86G98" duration="00:00:00.0649570" startTime="2025-05-12T10:53:40.1410793-03:00" endTime="2025-05-12T10:53:40.2060360-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ae076cee-a734-4206-953e-0372336f9213">
+      <Output>
+        <StdOut>info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 0 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 3 entities to in-memory store.&#xD;
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]&#xD;
+      Failed to determine the https port for redirect.&#xD;
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 0 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 4 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="af5f9c04-12d5-4ba7-ae69-cbda59e56efe" testId="a7fbe020-858a-3f92-0ef1-4d4fcb8e839e" testName="Should_Fail_When_Email_Is_Empty" computerName="DESKTOP-EC86G98" duration="00:00:00.0433640" startTime="2025-05-12T10:53:35.0265897-03:00" endTime="2025-05-12T10:53:35.0699534-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="af5f9c04-12d5-4ba7-ae69-cbda59e56efe" />
+    <UnitTestResult executionId="aa7e63f5-9d79-4fba-87e7-64f2648c1ace" testId="8c4b615a-0f65-a3cf-5fe9-577af1f95528" testName="Should_Return_Cars_With_Upcoming_Service" computerName="DESKTOP-EC86G98" duration="00:00:00.8366840" startTime="2025-05-12T10:53:37.8446727-03:00" endTime="2025-05-12T10:53:38.6813567-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="aa7e63f5-9d79-4fba-87e7-64f2648c1ace" />
+    <UnitTestResult executionId="fa86d580-f0e6-461e-a2ee-cdccd3f84e72" testId="e4a2168b-f43f-c4b9-65ad-592ee3606997" testName="Should_RegisterRental_When_CarIsAvailable" computerName="DESKTOP-EC86G98" duration="00:00:00.0047260" startTime="2025-05-12T10:53:37.8354479-03:00" endTime="2025-05-12T10:53:37.8401733-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fa86d580-f0e6-461e-a2ee-cdccd3f84e72" />
+    <UnitTestResult executionId="86849a1e-a43d-4143-b369-fdac9dac4fae" testId="2856ab3e-b940-c9db-c430-489d81b51770" testName="Should_RegisterRental_When_CarIsAvailable" computerName="DESKTOP-EC86G98" duration="00:00:00.0503170" startTime="2025-05-12T10:53:40.0907357-03:00" endTime="2025-05-12T10:53:40.1410527-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="86849a1e-a43d-4143-b369-fdac9dac4fae">
+      <Output>
+        <StdOut>info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 0 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 3 entities to in-memory store.&#xD;
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]&#xD;
+      Failed to determine the https port for redirect.&#xD;
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="67efb038-fdde-42b5-a1c5-223244364b4a" testId="3b230a6d-dd11-630b-9980-4c33ed294377" testName="Should_Fail_When_Password_Is_Empty" computerName="DESKTOP-EC86G98" duration="00:00:00.0004180" startTime="2025-05-12T10:53:35.0699844-03:00" endTime="2025-05-12T10:53:35.0704019-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="67efb038-fdde-42b5-a1c5-223244364b4a" />
+    <UnitTestResult executionId="cfef59de-59d2-4f3d-88bf-53bb5d0a7f45" testId="fcf33ba7-6024-7bbf-8045-fc7a21be7d55" testName="Should_RegisterCustomer_ThroughApi" computerName="DESKTOP-EC86G98" duration="00:00:00.0999380" startTime="2025-05-12T10:53:39.6987369-03:00" endTime="2025-05-12T10:53:39.7986740-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cfef59de-59d2-4f3d-88bf-53bb5d0a7f45">
+      <Output>
+        <StdOut>info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 0 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]&#xD;
+      Failed to determine the https port for redirect.&#xD;
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="48ae169b-74ef-405d-a95a-8ced843ba326" testId="b6160cd9-1246-483f-5a48-338121fd55bf" testName="Should_Fail_When_CarType_Is_Empty" computerName="DESKTOP-EC86G98" duration="00:00:00.0183540" startTime="2025-05-12T10:53:35.0980197-03:00" endTime="2025-05-12T10:53:35.1163737-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="48ae169b-74ef-405d-a95a-8ced843ba326" />
+    <UnitTestResult executionId="65383695-caff-49fd-9828-84ddd82c5ceb" testId="ca4311b7-fb0f-9739-afd7-ba7b4bf4bb23" testName="Should_CancelRental_When_RentalExists" computerName="DESKTOP-EC86G98" duration="00:00:00.0108510" startTime="2025-05-12T10:53:35.0857153-03:00" endTime="2025-05-12T10:53:35.0965658-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="65383695-caff-49fd-9828-84ddd82c5ceb" />
+    <UnitTestResult executionId="8bd78e55-9d8c-4049-89ad-e2591b5b1fde" testId="616f487b-13d0-5b5c-623c-b6dd88a8fa3f" testName="Should_Send_Email_Via_Activity" computerName="DESKTOP-EC86G98" duration="00:00:02.7110890" startTime="2025-05-12T10:53:35.1242099-03:00" endTime="2025-05-12T10:53:37.8352987-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8bd78e55-9d8c-4049-89ad-e2591b5b1fde" />
+    <UnitTestResult executionId="2d7d3d3a-13de-49a6-a1ff-ca90be5bf7f0" testId="2d67d683-49de-c9fa-4f8d-f815022d5a40" testName="Should_Pass_With_Valid_Command" computerName="DESKTOP-EC86G98" duration="00:00:00.0001490" startTime="2025-05-12T10:53:35.1181481-03:00" endTime="2025-05-12T10:53:35.1182972-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2d7d3d3a-13de-49a6-a1ff-ca90be5bf7f0" />
+    <UnitTestResult executionId="87a2ffa0-839c-47ff-85df-063c33fc974a" testId="08649d10-e4f9-cb6a-146b-0d560b78059c" testName="Should_ModifyRental_Through_Api" computerName="DESKTOP-EC86G98" duration="00:00:00.1361320" startTime="2025-05-12T10:53:39.7989267-03:00" endTime="2025-05-12T10:53:39.9350583-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="87a2ffa0-839c-47ff-85df-063c33fc974a">
+      <Output>
+        <StdOut>info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 0 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 5 entities to in-memory store.&#xD;
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]&#xD;
+      Failed to determine the https port for redirect.&#xD;
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="3de26eff-76cf-45e8-aa0a-0018163c39ba" testId="91789792-7361-bda7-344e-9374de9d0611" testName="Handle_ShouldReturnCustomerId_WhenCommandIsValid" computerName="DESKTOP-EC86G98" duration="00:00:00.0183580" startTime="2025-05-12T10:53:35.0080957-03:00" endTime="2025-05-12T10:53:35.0264539-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3de26eff-76cf-45e8-aa0a-0018163c39ba" />
+    <UnitTestResult executionId="dc7646fc-3105-4d08-be73-bb5dce95c971" testId="b7e3758f-9006-5c92-bf6e-4df814415cd8" testName="Should_Pass_When_Valid_Data" computerName="DESKTOP-EC86G98" duration="00:00:00.0001620" startTime="2025-05-12T10:53:35.0704182-03:00" endTime="2025-05-12T10:53:35.0705798-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="dc7646fc-3105-4d08-be73-bb5dce95c971" />
+    <UnitTestResult executionId="40ea47d8-1cb1-48bd-ba6a-f0d77413afc0" testId="a555668e-313b-97bf-72af-0e78ff68f589" testName="Should_Fail_When_Dates_Are_Same" computerName="DESKTOP-EC86G98" duration="00:00:00.0010100" startTime="2025-05-12T10:53:35.1168563-03:00" endTime="2025-05-12T10:53:35.1178657-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="40ea47d8-1cb1-48bd-ba6a-f0d77413afc0" />
+    <UnitTestResult executionId="99bbf7e4-698d-4698-8668-8bda20ee5df6" testId="004106be-b37b-efe6-7be6-507bacd984d0" testName="Should_Throw_When_CarNotFound" computerName="DESKTOP-EC86G98" duration="00:00:00.0015130" startTime="2025-05-12T10:53:40.0855591-03:00" endTime="2025-05-12T10:53:40.0870723-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="99bbf7e4-698d-4698-8668-8bda20ee5df6" />
+    <UnitTestResult executionId="d1f70709-c935-4b25-b662-b10dc27bdeec" testId="b6aeb68c-b80a-dd59-3adb-24a59b324323" testName="Should_Throw_When_CarIsInService" computerName="DESKTOP-EC86G98" duration="00:00:00.0014260" startTime="2025-05-12T10:53:37.8417065-03:00" endTime="2025-05-12T10:53:37.8431328-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d1f70709-c935-4b25-b662-b10dc27bdeec" />
+    <UnitTestResult executionId="3feb8c01-cd69-40c5-a2de-506e5bd8afb4" testId="b0ba9494-95eb-e408-b55c-9887ab2ef102" testName="Should_Register_And_Cancel_Rental_Through_Api" computerName="DESKTOP-EC86G98" duration="00:00:00.0901470" startTime="2025-05-12T10:53:39.9350881-03:00" endTime="2025-05-12T10:53:40.0252340-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3feb8c01-cd69-40c5-a2de-506e5bd8afb4">
+      <Output>
+        <StdOut>info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 0 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 3 entities to in-memory store.&#xD;
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]&#xD;
+      Failed to determine the https port for redirect.&#xD;
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info</StdOut>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Should_Pass_With_Valid_Command" storage="d:\repos\carrentalsolution\carrentalsolution\carrental.tests\bin\debug\net6.0\carrental.tests.dll" id="2d67d683-49de-c9fa-4f8d-f815022d5a40">
+      <Execution id="2d7d3d3a-13de-49a6-a1ff-ca90be5bf7f0" />
+      <TestMethod codeBase="D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Tests\bin\Debug\net6.0\CarRental.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="CarRental.Tests.Application.UseCases.Rentals.RegisterRentalCommandValidatorTests" name="Should_Pass_With_Valid_Command" />
+    </UnitTest>
+    <UnitTest name="Should_Register_And_Cancel_Rental_Through_Api" storage="d:\repos\carrentalsolution\carrentalsolution\carrental.tests\bin\debug\net6.0\carrental.tests.dll" id="b0ba9494-95eb-e408-b55c-9887ab2ef102">
+      <Execution id="3feb8c01-cd69-40c5-a2de-506e5bd8afb4" />
+      <TestMethod codeBase="D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Tests\bin\Debug\net6.0\CarRental.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="CarRental.Tests.Integration.API.Rental.CarRentalApiTests" name="Should_Register_And_Cancel_Rental_Through_Api" />
+    </UnitTest>
+    <UnitTest name="Should_RegisterRental_When_CarIsAvailable" storage="d:\repos\carrentalsolution\carrentalsolution\carrental.tests\bin\debug\net6.0\carrental.tests.dll" id="2856ab3e-b940-c9db-c430-489d81b51770">
+      <Execution id="86849a1e-a43d-4143-b369-fdac9dac4fae" />
+      <TestMethod codeBase="D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Tests\bin\Debug\net6.0\CarRental.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="RegisterRentalIntegrationTests" name="Should_RegisterRental_When_CarIsAvailable" />
+    </UnitTest>
+    <UnitTest name="Should_Pass_When_Valid_Data" storage="d:\repos\carrentalsolution\carrentalsolution\carrental.tests\bin\debug\net6.0\carrental.tests.dll" id="b7e3758f-9006-5c92-bf6e-4df814415cd8">
+      <Execution id="dc7646fc-3105-4d08-be73-bb5dce95c971" />
+      <TestMethod codeBase="D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Tests\bin\Debug\net6.0\CarRental.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="CarRental.Tests.Application.UseCases.Customers.Command.RegisterCustomerCommandValidatorTests" name="Should_Pass_When_Valid_Data" />
+    </UnitTest>
+    <UnitTest name="Should_Return_Correct_Utilization_Percentage_By_Car_Type" storage="d:\repos\carrentalsolution\carrentalsolution\carrental.tests\bin\debug\net6.0\carrental.tests.dll" id="b2fbd933-0f62-f58f-91c9-0d20d0a1e367">
+      <Execution id="5bfbdb60-8969-4ad1-ae3b-834cbaa173bc" />
+      <TestMethod codeBase="D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Tests\bin\Debug\net6.0\CarRental.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="CarRental.Tests.Application.UseCases.Statistics.GetUtilizationQueryHandlerTests" name="Should_Return_Correct_Utilization_Percentage_By_Car_Type" />
+    </UnitTest>
+    <UnitTest name="Should_RegisterRental_When_CarIsAvailable" storage="d:\repos\carrentalsolution\carrentalsolution\carrental.tests\bin\debug\net6.0\carrental.tests.dll" id="e4a2168b-f43f-c4b9-65ad-592ee3606997">
+      <Execution id="fa86d580-f0e6-461e-a2ee-cdccd3f84e72" />
+      <TestMethod codeBase="D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Tests\bin\Debug\net6.0\CarRental.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="CarRental.Tests.Infraestructure.RegisterRentalUseCaseTests" name="Should_RegisterRental_When_CarIsAvailable" />
+    </UnitTest>
+    <UnitTest name="Should_Return_EmptyList_When_No_Cars_Are_Upcoming_For_Service" storage="d:\repos\carrentalsolution\carrentalsolution\carrental.tests\bin\debug\net6.0\carrental.tests.dll" id="1ccbaa31-cab6-d085-3eb3-befec12b4d12">
+      <Execution id="274d3647-5a1c-4b3a-a331-5d0ff71727a8" />
+      <TestMethod codeBase="D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Tests\bin\Debug\net6.0\CarRental.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="CarRental.Tests.Application.UseCases.Cars.Query.GetUpcomingServiceCarsQueryHandlerUnitTests" name="Should_Return_EmptyList_When_No_Cars_Are_Upcoming_For_Service" />
+    </UnitTest>
+    <UnitTest name="Should_Throw_When_RentalNotFound" storage="d:\repos\carrentalsolution\carrentalsolution\carrental.tests\bin\debug\net6.0\carrental.tests.dll" id="f1077cdd-ea25-3c98-a5a3-798c2a2725ee">
+      <Execution id="72d47281-7d2c-4d74-8cfc-d12b69b712ac" />
+      <TestMethod codeBase="D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Tests\bin\Debug\net6.0\CarRental.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="CarRental.Tests.Application.UseCases.Rentals.Commands.CancelRental.CancelRentalCommandHandlerTests" name="Should_Throw_When_RentalNotFound" />
+    </UnitTest>
+    <UnitTest name="Should_ModifyRental_Through_Api" storage="d:\repos\carrentalsolution\carrentalsolution\carrental.tests\bin\debug\net6.0\carrental.tests.dll" id="08649d10-e4f9-cb6a-146b-0d560b78059c">
+      <Execution id="87a2ffa0-839c-47ff-85df-063c33fc974a" />
+      <TestMethod codeBase="D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Tests\bin\Debug\net6.0\CarRental.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="CarRental.Tests.Integration.API.Rental.CarRentalApiTests" name="Should_ModifyRental_Through_Api" />
+    </UnitTest>
+    <UnitTest name="Should_Throw_Exception_When_Service_Fails" storage="d:\repos\carrentalsolution\carrentalsolution\carrental.tests\bin\debug\net6.0\carrental.tests.dll" id="06daa8aa-b515-d610-a99f-be75b818c7cb">
+      <Execution id="605d4740-d713-4b2a-b9a0-8f101308e72e" />
+      <TestMethod codeBase="D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Tests\bin\Debug\net6.0\CarRental.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="CarRental.Tests.Application.UseCases.Customers.Commands.RegisterCustomerCommandHandlerTests" name="Should_Throw_Exception_When_Service_Fails" />
+    </UnitTest>
+    <UnitTest name="Should_Register_Customer_When_Valid" storage="d:\repos\carrentalsolution\carrentalsolution\carrental.tests\bin\debug\net6.0\carrental.tests.dll" id="867f12b4-2498-3114-2c38-fe998fb9aced">
+      <Execution id="f51c3de3-fe7c-4f4e-af06-eadf4b94657e" />
+      <TestMethod codeBase="D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Tests\bin\Debug\net6.0\CarRental.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="CarRental.Tests.Application.UseCases.Customers.Commands.RegisterCustomerCommandHandlerTests" name="Should_Register_Customer_When_Valid" />
+    </UnitTest>
+    <UnitTest name="Should_Fail_When_StartDate_Is_After_EndDate" storage="d:\repos\carrentalsolution\carrentalsolution\carrental.tests\bin\debug\net6.0\carrental.tests.dll" id="5bbf7395-4aa2-d0ef-5da2-0ebb779e62ee">
+      <Execution id="cc8793e0-0d43-49c1-9e81-893754446bf8" />
+      <TestMethod codeBase="D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Tests\bin\Debug\net6.0\CarRental.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="CarRental.Tests.Application.UseCases.Rentals.RegisterRentalCommandValidatorTests" name="Should_Fail_When_StartDate_Is_After_EndDate" />
+    </UnitTest>
+    <UnitTest name="Should_Return_MostRentedCarType_Through_Api" storage="d:\repos\carrentalsolution\carrentalsolution\carrental.tests\bin\debug\net6.0\carrental.tests.dll" id="9ae12858-8bfd-a140-3e57-7daecb233adc">
+      <Execution id="774fca88-8b46-43cb-bdb9-d6ff9248f4cb" />
+      <TestMethod codeBase="D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Tests\bin\Debug\net6.0\CarRental.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="StatisticsApiTests" name="Should_Return_MostRentedCarType_Through_Api" />
+    </UnitTest>
+    <UnitTest name="Should_Throw_When_CarIsInService" storage="d:\repos\carrentalsolution\carrentalsolution\carrental.tests\bin\debug\net6.0\carrental.tests.dll" id="b6aeb68c-b80a-dd59-3adb-24a59b324323">
+      <Execution id="d1f70709-c935-4b25-b662-b10dc27bdeec" />
+      <TestMethod codeBase="D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Tests\bin\Debug\net6.0\CarRental.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="CarRental.Tests.Infraestructure.RegisterRentalUseCaseTests" name="Should_Throw_When_CarIsInService" />
+    </UnitTest>
+    <UnitTest name="Should_Fail_When_CustomerId_Is_Empty" storage="d:\repos\carrentalsolution\carrentalsolution\carrental.tests\bin\debug\net6.0\carrental.tests.dll" id="cae01742-638b-4866-3a55-ec7cb3b28054">
+      <Execution id="ca5f113b-6f79-411e-8476-8e8984a6d945" />
+      <TestMethod codeBase="D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Tests\bin\Debug\net6.0\CarRental.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="CarRental.Tests.Application.UseCases.Rentals.RegisterRentalCommandValidatorTests" name="Should_Fail_When_CustomerId_Is_Empty" />
+    </UnitTest>
+    <UnitTest name="Should_Fail_When_Email_Is_Empty" storage="d:\repos\carrentalsolution\carrentalsolution\carrental.tests\bin\debug\net6.0\carrental.tests.dll" id="a7fbe020-858a-3f92-0ef1-4d4fcb8e839e">
+      <Execution id="af5f9c04-12d5-4ba7-ae69-cbda59e56efe" />
+      <TestMethod codeBase="D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Tests\bin\Debug\net6.0\CarRental.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="CarRental.Tests.Application.UseCases.Customers.Command.RegisterCustomerCommandValidatorTests" name="Should_Fail_When_Email_Is_Empty" />
+    </UnitTest>
+    <UnitTest name="Handle_ShouldReturnCustomerId_WhenCommandIsValid" storage="d:\repos\carrentalsolution\carrentalsolution\carrental.tests\bin\debug\net6.0\carrental.tests.dll" id="91789792-7361-bda7-344e-9374de9d0611">
+      <Execution id="3de26eff-76cf-45e8-aa0a-0018163c39ba" />
+      <TestMethod codeBase="D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Tests\bin\Debug\net6.0\CarRental.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="CarRental.Tests.Application.UseCases.Customers.Command.RegisterCustomerCommandHandlerTests" name="Handle_ShouldReturnCustomerId_WhenCommandIsValid" />
+    </UnitTest>
+    <UnitTest name="Should_Throw_When_CarAlreadyRentedByAnotherCustomer" storage="d:\repos\carrentalsolution\carrentalsolution\carrental.tests\bin\debug\net6.0\carrental.tests.dll" id="fb630980-ae91-f940-6bab-0ab9bd88ced9">
+      <Execution id="8f6ac37a-f72c-4e93-8c62-78641ba2591c" />
+      <TestMethod codeBase="D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Tests\bin\Debug\net6.0\CarRental.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="CarRental.Tests.Infraestructure.RegisterRentalUseCaseTests" name="Should_Throw_When_CarAlreadyRentedByAnotherCustomer" />
+    </UnitTest>
+    <UnitTest name="Should_Throw_When_NoCarAvailable" storage="d:\repos\carrentalsolution\carrentalsolution\carrental.tests\bin\debug\net6.0\carrental.tests.dll" id="214c7fb2-f750-fb01-41c6-2086049e0e79">
+      <Execution id="183606d0-e1f8-4f58-b75e-d39675cc05c2" />
+      <TestMethod codeBase="D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Tests\bin\Debug\net6.0\CarRental.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="CarRental.Tests.Infraestructure.RegisterRentalUseCaseTests" name="Should_Throw_When_NoCarAvailable" />
+    </UnitTest>
+    <UnitTest name="Should_Return_UtilizationByType_Through_Api" storage="d:\repos\carrentalsolution\carrentalsolution\carrental.tests\bin\debug\net6.0\carrental.tests.dll" id="b271cd0f-63e6-3b14-e756-fbf630886681">
+      <Execution id="b8210111-9bc9-40ac-8b5a-e99859a33cb7" />
+      <TestMethod codeBase="D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Tests\bin\Debug\net6.0\CarRental.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="StatisticsApiTests" name="Should_Return_UtilizationByType_Through_Api" />
+    </UnitTest>
+    <UnitTest name="Should_Fail_When_CarType_Is_Empty" storage="d:\repos\carrentalsolution\carrentalsolution\carrental.tests\bin\debug\net6.0\carrental.tests.dll" id="b6160cd9-1246-483f-5a48-338121fd55bf">
+      <Execution id="48ae169b-74ef-405d-a95a-8ced843ba326" />
+      <TestMethod codeBase="D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Tests\bin\Debug\net6.0\CarRental.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="CarRental.Tests.Application.UseCases.Rentals.RegisterRentalCommandValidatorTests" name="Should_Fail_When_CarType_Is_Empty" />
+    </UnitTest>
+    <UnitTest name="Should_Send_Email_Via_Activity" storage="d:\repos\carrentalsolution\carrentalsolution\carrental.tests\bin\debug\net6.0\carrental.tests.dll" id="616f487b-13d0-5b5c-623c-b6dd88a8fa3f">
+      <Execution id="8bd78e55-9d8c-4049-89ad-e2591b5b1fde" />
+      <TestMethod codeBase="D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Tests\bin\Debug\net6.0\CarRental.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="CarRental.Tests.Functions.Email.Activities.SendEmailActivityFunctionTests" name="Should_Send_Email_Via_Activity" />
+    </UnitTest>
+    <UnitTest name="Should_Throw_When_CarNotFound" storage="d:\repos\carrentalsolution\carrentalsolution\carrental.tests\bin\debug\net6.0\carrental.tests.dll" id="004106be-b37b-efe6-7be6-507bacd984d0">
+      <Execution id="99bbf7e4-698d-4698-8668-8bda20ee5df6" />
+      <TestMethod codeBase="D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Tests\bin\Debug\net6.0\CarRental.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="CarRental.Tests.UseCases.Rentals.Commands.ModifyRentalCommandHandlerTests" name="Should_Throw_When_CarNotFound" />
+    </UnitTest>
+    <UnitTest name="Should_Return_UpcomingServiceCars_From_CarService" storage="d:\repos\carrentalsolution\carrentalsolution\carrental.tests\bin\debug\net6.0\carrental.tests.dll" id="b38da856-df4b-5194-3ba2-8827fd29a133">
+      <Execution id="a50608b4-cbb9-4708-968a-3f46dff66a4c" />
+      <TestMethod codeBase="D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Tests\bin\Debug\net6.0\CarRental.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="CarRental.Tests.Application.UseCases.Cars.Query.GetUpcomingServiceCarsQueryHandlerUnitTests" name="Should_Return_UpcomingServiceCars_From_CarService" />
+    </UnitTest>
+    <UnitTest name="Should_CancelRental_When_RentalExists" storage="d:\repos\carrentalsolution\carrentalsolution\carrental.tests\bin\debug\net6.0\carrental.tests.dll" id="ca4311b7-fb0f-9739-afd7-ba7b4bf4bb23">
+      <Execution id="65383695-caff-49fd-9828-84ddd82c5ceb" />
+      <TestMethod codeBase="D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Tests\bin\Debug\net6.0\CarRental.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="CarRental.Tests.Application.UseCases.Rentals.Commands.CancelRental.CancelRentalCommandHandlerTests" name="Should_CancelRental_When_RentalExists" />
+    </UnitTest>
+    <UnitTest name="Should_Return_UpcomingServiceCars" storage="d:\repos\carrentalsolution\carrentalsolution\carrental.tests\bin\debug\net6.0\carrental.tests.dll" id="21c16782-ad22-c55c-3a26-35babad8ecbb">
+      <Execution id="400cb935-4abf-46a8-a67f-3e70bb514887" />
+      <TestMethod codeBase="D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Tests\bin\Debug\net6.0\CarRental.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="CarRental.Tests.Integration.API.Car.CarApiTests" name="Should_Return_UpcomingServiceCars" />
+    </UnitTest>
+    <UnitTest name="Should_Return_MostRentedCarType" storage="d:\repos\carrentalsolution\carrentalsolution\carrental.tests\bin\debug\net6.0\carrental.tests.dll" id="20dfbed4-1264-32fa-198e-2e61071e2a6e">
+      <Execution id="c280fa4b-157d-48a0-b6ec-330cc4f4b430" />
+      <TestMethod codeBase="D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Tests\bin\Debug\net6.0\CarRental.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="CarRental.Tests.UseCases.Statistics.GetMostRentedCarTypeQueryHandlerTests" name="Should_Return_MostRentedCarType" />
+    </UnitTest>
+    <UnitTest name="Should_Fail_When_Dates_Are_Same" storage="d:\repos\carrentalsolution\carrentalsolution\carrental.tests\bin\debug\net6.0\carrental.tests.dll" id="a555668e-313b-97bf-72af-0e78ff68f589">
+      <Execution id="40ea47d8-1cb1-48bd-ba6a-f0d77413afc0" />
+      <TestMethod codeBase="D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Tests\bin\Debug\net6.0\CarRental.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="CarRental.Tests.Application.UseCases.Rentals.RegisterRentalCommandValidatorTests" name="Should_Fail_When_Dates_Are_Same" />
+    </UnitTest>
+    <UnitTest name="Should_Throw_When_CarAlreadyReserved" storage="d:\repos\carrentalsolution\carrentalsolution\carrental.tests\bin\debug\net6.0\carrental.tests.dll" id="497ba41c-bc16-0bf6-dd9e-79e39d24de23">
+      <Execution id="ae076cee-a734-4206-953e-0372336f9213" />
+      <TestMethod codeBase="D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Tests\bin\Debug\net6.0\CarRental.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="RegisterRentalIntegrationTests" name="Should_Throw_When_CarAlreadyReserved" />
+    </UnitTest>
+    <UnitTest name="Should_RegisterRental_Through_Api" storage="d:\repos\carrentalsolution\carrentalsolution\carrental.tests\bin\debug\net6.0\carrental.tests.dll" id="5156cb6a-c9a1-5d71-2df9-9f8359ca9696">
+      <Execution id="ed0d4ead-a5b6-42a5-a8a8-5cbab96369cf" />
+      <TestMethod codeBase="D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Tests\bin\Debug\net6.0\CarRental.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="CarRental.Tests.Integration.API.Rental.CarRentalApiTests" name="Should_RegisterRental_Through_Api" />
+    </UnitTest>
+    <UnitTest name="Should_ModifyRental_When_Valid" storage="d:\repos\carrentalsolution\carrentalsolution\carrental.tests\bin\debug\net6.0\carrental.tests.dll" id="e0360663-61cd-c956-2931-c1515baeeed0">
+      <Execution id="d583e795-6a13-477c-a9bd-a4bd58e1fc22" />
+      <TestMethod codeBase="D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Tests\bin\Debug\net6.0\CarRental.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="CarRental.Tests.UseCases.Rentals.Commands.ModifyRentalCommandHandlerTests" name="Should_ModifyRental_When_Valid" />
+    </UnitTest>
+    <UnitTest name="Should_Fail_When_Password_Is_Empty" storage="d:\repos\carrentalsolution\carrentalsolution\carrental.tests\bin\debug\net6.0\carrental.tests.dll" id="3b230a6d-dd11-630b-9980-4c33ed294377">
+      <Execution id="67efb038-fdde-42b5-a1c5-223244364b4a" />
+      <TestMethod codeBase="D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Tests\bin\Debug\net6.0\CarRental.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="CarRental.Tests.Application.UseCases.Customers.Command.RegisterCustomerCommandValidatorTests" name="Should_Fail_When_Password_Is_Empty" />
+    </UnitTest>
+    <UnitTest name="Should_Return_Cars_With_Upcoming_Service" storage="d:\repos\carrentalsolution\carrentalsolution\carrental.tests\bin\debug\net6.0\carrental.tests.dll" id="8c4b615a-0f65-a3cf-5fe9-577af1f95528">
+      <Execution id="aa7e63f5-9d79-4fba-87e7-64f2648c1ace" />
+      <TestMethod codeBase="D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Tests\bin\Debug\net6.0\CarRental.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="CarRental.Tests.Infrastructure.Services.CarServiceTests" name="Should_Return_Cars_With_Upcoming_Service" />
+    </UnitTest>
+    <UnitTest name="Should_RegisterCustomer_ThroughApi" storage="d:\repos\carrentalsolution\carrentalsolution\carrental.tests\bin\debug\net6.0\carrental.tests.dll" id="fcf33ba7-6024-7bbf-8045-fc7a21be7d55">
+      <Execution id="cfef59de-59d2-4f3d-88bf-53bb5d0a7f45" />
+      <TestMethod codeBase="D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Tests\bin\Debug\net6.0\CarRental.Tests.dll" adapterTypeName="executor://nunit3testexecutor/" className="CarRental.Tests.Integration.API.Customer.CustomersApiTests" name="Should_RegisterCustomer_ThroughApi" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="06daa8aa-b515-d610-a99f-be75b818c7cb" executionId="605d4740-d713-4b2a-b9a0-8f101308e72e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5156cb6a-c9a1-5d71-2df9-9f8359ca9696" executionId="ed0d4ead-a5b6-42a5-a8a8-5cbab96369cf" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e0360663-61cd-c956-2931-c1515baeeed0" executionId="d583e795-6a13-477c-a9bd-a4bd58e1fc22" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cae01742-638b-4866-3a55-ec7cb3b28054" executionId="ca5f113b-6f79-411e-8476-8e8984a6d945" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b2fbd933-0f62-f58f-91c9-0d20d0a1e367" executionId="5bfbdb60-8969-4ad1-ae3b-834cbaa173bc" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9ae12858-8bfd-a140-3e57-7daecb233adc" executionId="774fca88-8b46-43cb-bdb9-d6ff9248f4cb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="21c16782-ad22-c55c-3a26-35babad8ecbb" executionId="400cb935-4abf-46a8-a67f-3e70bb514887" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="214c7fb2-f750-fb01-41c6-2086049e0e79" executionId="183606d0-e1f8-4f58-b75e-d39675cc05c2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5bbf7395-4aa2-d0ef-5da2-0ebb779e62ee" executionId="cc8793e0-0d43-49c1-9e81-893754446bf8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f1077cdd-ea25-3c98-a5a3-798c2a2725ee" executionId="72d47281-7d2c-4d74-8cfc-d12b69b712ac" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1ccbaa31-cab6-d085-3eb3-befec12b4d12" executionId="274d3647-5a1c-4b3a-a331-5d0ff71727a8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b38da856-df4b-5194-3ba2-8827fd29a133" executionId="a50608b4-cbb9-4708-968a-3f46dff66a4c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="20dfbed4-1264-32fa-198e-2e61071e2a6e" executionId="c280fa4b-157d-48a0-b6ec-330cc4f4b430" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b271cd0f-63e6-3b14-e756-fbf630886681" executionId="b8210111-9bc9-40ac-8b5a-e99859a33cb7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="867f12b4-2498-3114-2c38-fe998fb9aced" executionId="f51c3de3-fe7c-4f4e-af06-eadf4b94657e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fb630980-ae91-f940-6bab-0ab9bd88ced9" executionId="8f6ac37a-f72c-4e93-8c62-78641ba2591c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="497ba41c-bc16-0bf6-dd9e-79e39d24de23" executionId="ae076cee-a734-4206-953e-0372336f9213" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a7fbe020-858a-3f92-0ef1-4d4fcb8e839e" executionId="af5f9c04-12d5-4ba7-ae69-cbda59e56efe" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8c4b615a-0f65-a3cf-5fe9-577af1f95528" executionId="aa7e63f5-9d79-4fba-87e7-64f2648c1ace" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e4a2168b-f43f-c4b9-65ad-592ee3606997" executionId="fa86d580-f0e6-461e-a2ee-cdccd3f84e72" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2856ab3e-b940-c9db-c430-489d81b51770" executionId="86849a1e-a43d-4143-b369-fdac9dac4fae" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3b230a6d-dd11-630b-9980-4c33ed294377" executionId="67efb038-fdde-42b5-a1c5-223244364b4a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fcf33ba7-6024-7bbf-8045-fc7a21be7d55" executionId="cfef59de-59d2-4f3d-88bf-53bb5d0a7f45" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b6160cd9-1246-483f-5a48-338121fd55bf" executionId="48ae169b-74ef-405d-a95a-8ced843ba326" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ca4311b7-fb0f-9739-afd7-ba7b4bf4bb23" executionId="65383695-caff-49fd-9828-84ddd82c5ceb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="616f487b-13d0-5b5c-623c-b6dd88a8fa3f" executionId="8bd78e55-9d8c-4049-89ad-e2591b5b1fde" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2d67d683-49de-c9fa-4f8d-f815022d5a40" executionId="2d7d3d3a-13de-49a6-a1ff-ca90be5bf7f0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="08649d10-e4f9-cb6a-146b-0d560b78059c" executionId="87a2ffa0-839c-47ff-85df-063c33fc974a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="91789792-7361-bda7-344e-9374de9d0611" executionId="3de26eff-76cf-45e8-aa0a-0018163c39ba" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b7e3758f-9006-5c92-bf6e-4df814415cd8" executionId="dc7646fc-3105-4d08-be73-bb5dce95c971" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a555668e-313b-97bf-72af-0e78ff68f589" executionId="40ea47d8-1cb1-48bd-ba6a-f0d77413afc0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="004106be-b37b-efe6-7be6-507bacd984d0" executionId="99bbf7e4-698d-4698-8668-8bda20ee5df6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b6aeb68c-b80a-dd59-3adb-24a59b324323" executionId="d1f70709-c935-4b25-b662-b10dc27bdeec" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b0ba9494-95eb-e408-b55c-9887ab2ef102" executionId="3feb8c01-cd69-40c5-a2de-506e5bd8afb4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="34" executed="34" passed="34" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>NUnit Adapter 4.2.0.0: Test execution started&#xD;
+Running all tests in D:\repos\CarRentalSolution\CarRentalSolution\CarRental.Tests\bin\Debug\net6.0\CarRental.Tests.dll&#xD;
+   NUnit3TestExecutor discovered 34 of 34 NUnit test cases using Current Discovery mode, Non-Explicit run&#xD;
+NUnit Adapter 4.2.0.0: Test execution complete&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="DESKTOP-EC86G98" outcome="Warning" timestamp="2025-05-12T10:53:39.6998855-03:00">
+        <Text>info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 0 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]&#xD;
+      Failed to determine the https port for redirect.&#xD;
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-EC86G98" outcome="Warning" timestamp="2025-05-12T10:53:39.7996078-03:00">
+        <Text>info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 0 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]&#xD;
+      Failed to determine the https port for redirect.&#xD;
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-EC86G98" outcome="Warning" timestamp="2025-05-12T10:53:39.9360272-03:00">
+        <Text>info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 0 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 5 entities to in-memory store.&#xD;
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]&#xD;
+      Failed to determine the https port for redirect.&#xD;
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-EC86G98" outcome="Warning" timestamp="2025-05-12T10:53:40.0259988-03:00">
+        <Text>info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 0 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 3 entities to in-memory store.&#xD;
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]&#xD;
+      Failed to determine the https port for redirect.&#xD;
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-EC86G98" outcome="Warning" timestamp="2025-05-12T10:53:40.0791590-03:00">
+        <Text>info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 0 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 3 entities to in-memory store.&#xD;
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]&#xD;
+      Failed to determine the https port for redirect.&#xD;
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-EC86G98" outcome="Warning" timestamp="2025-05-12T10:53:40.1418268-03:00">
+        <Text>info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 0 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 3 entities to in-memory store.&#xD;
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]&#xD;
+      Failed to determine the https port for redirect.&#xD;
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-EC86G98" outcome="Warning" timestamp="2025-05-12T10:53:40.2068246-03:00">
+        <Text>info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 0 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 3 entities to in-memory store.&#xD;
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]&#xD;
+      Failed to determine the https port for redirect.&#xD;
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 0 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 4 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-EC86G98" outcome="Warning" timestamp="2025-05-12T10:53:40.2910859-03:00">
+        <Text>info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 0 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 7 entities to in-memory store.&#xD;
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]&#xD;
+      Failed to determine the https port for redirect.&#xD;
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-EC86G98" outcome="Warning" timestamp="2025-05-12T10:53:41.1423390-03:00">
+        <Text>info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 0 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 1 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 2 entities to in-memory store.&#xD;
+info: Microsoft.EntityFrameworkCore.Update[30100]&#xD;
+      Saved 7 entities to in-memory store.&#xD;
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]&#xD;
+      Failed to determine the https port for redirect.&#xD;
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]&#xD;
+      Entity Framework Core 6.0.28 initialized 'CarRentalDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:6.0.28' with options: StoreName=TestDb &#xD;
+RESPONSE: [{"type":"SUV","percentageUsed":100},{"type":"Sedan","percentageUsed":100}]&#xD;
+</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

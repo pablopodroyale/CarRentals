@@ -3,6 +3,9 @@
 public class Customer
 {
     public Guid Id { get; set; }
+    public string Email { get; set; }
+    public string ApplicationUserId { get; set; }
+    public Address Address { get; set; }
     public string FullName { get; set; }
-    public string Address { get; set; }
+
 }

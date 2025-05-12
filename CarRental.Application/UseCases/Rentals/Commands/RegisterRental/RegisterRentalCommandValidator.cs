@@ -6,14 +6,19 @@ namespace CarRental.Application.UseCases.Rentals.Commands.RegisterRental
     {
         public RegisterRentalCommandValidator()
         {
-            RuleFor(x => x.CustomerId).NotEmpty().WithMessage("CustomerId is required.");
-            RuleFor(x => x.CarType).NotEmpty().WithMessage("Car type is required.");
+            RuleFor(x => x.CustomerId)
+            .NotEmpty();
+
+            RuleFor(x => x.CarType)
+                .NotEmpty();
+
             RuleFor(x => x.StartDate)
                 .LessThan(x => x.EndDate)
                 .WithMessage("Start date must be before end date.");
+
             RuleFor(x => x.EndDate)
-                .GreaterThan(DateTime.Today.AddDays(-1))
-                .WithMessage("End date must be in the future.");
+                .GreaterThan(x => x.StartDate)
+                .WithMessage("End date must be after start date.");
         }
     }
 }

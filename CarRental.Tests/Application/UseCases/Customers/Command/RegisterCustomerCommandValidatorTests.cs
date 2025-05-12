@@ -1,21 +1,21 @@
 ﻿using CarRental.Application.UseCases.Customers.Commands.RegisterCustomer;
 using NUnit.Framework;
 
-namespace CarRental.Tests.Application.UseCases.Customers
+namespace CarRental.Tests.Application.UseCases.Customers.Command
 {
     [TestFixture]
     public class RegisterCustomerCommandValidatorTests
     {
         [Test]
-        public void Should_Fail_When_Name_Is_Empty()
+        public void Should_Fail_When_Email_Is_Empty()
         {
             // Arrange
             var validator = new RegisterCustomerCommandValidator();
 
             var command = new RegisterCustomerCommand
             {
-                FullName = "",
-                Address = "123 Calle Falsa"
+                Email = "",
+                Password = "User123!"
             };
 
             // Act
@@ -23,24 +23,24 @@ namespace CarRental.Tests.Application.UseCases.Customers
 
             // Assert
             Assert.IsFalse(result.IsValid);
-            Assert.That(result.Errors.Any(e => e.PropertyName == "FullName"));
+            Assert.That(result.Errors.Any(e => e.PropertyName == "Email"));
         }
 
         [Test]
-        public void Should_Fail_When_Address_Is_Empty()
+        public void Should_Fail_When_Password_Is_Empty()
         {
             var validator = new RegisterCustomerCommandValidator();
 
             var command = new RegisterCustomerCommand
             {
-                FullName = "Juan Pérez",
-                Address = ""
+                Email = "test@test.com",
+                Password = ""
             };
 
             var result = validator.Validate(command);
 
             Assert.IsFalse(result.IsValid);
-            Assert.That(result.Errors.Any(e => e.PropertyName == "Address"));
+            Assert.That(result.Errors.Any(e => e.PropertyName == "Password"));
         }
 
         [Test]
@@ -50,8 +50,8 @@ namespace CarRental.Tests.Application.UseCases.Customers
 
             var command = new RegisterCustomerCommand
             {
-                FullName = "Juan Pérez",
-                Address = "Calle Siempre Viva 742"
+                Email = "test@test.com",
+                Password = "User123!"
             };
 
             var result = validator.Validate(command);

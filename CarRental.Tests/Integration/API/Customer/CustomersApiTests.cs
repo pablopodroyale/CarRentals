@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using CarRental.Application.UseCases.Customers.Commands.RegisterCustomer;
+using Microsoft.AspNetCore.Hosting;
+using System.Text;
 using System.Text.Json;
 
 namespace CarRental.Tests.Integration.API.Customer
@@ -8,23 +10,28 @@ namespace CarRental.Tests.Integration.API.Customer
     internal class CustomersApiTests
     {
         private HttpClient _client;
+        private CustomWebApplicationFactory _factory;
 
         [SetUp]
         public void Setup()
         {
-            var factory = new CustomWebApplicationFactory(); // Asegurate de tener esta clase configurada
-            _client = factory.CreateClient();
+            _factory = new CustomWebApplicationFactory();
         }
 
         [Test]
         public async Task Should_RegisterCustomer_ThroughApi()
         {
             // Arrange
-            var request = new
+            RegisterCustomerCommand request = new RegisterCustomerCommand()
             {
-                fullName = "Pablo Podgaiz",
-                address = "Calle Siempreviva 742"
+                FullName = "Test User",
+                Email = "test@test.com",
+                Password = "Test1234$",
+                Address = "123 Main St"
             };
+
+
+            _client = _factory.CreateUserClient();
 
             var content = new StringContent(
                 JsonSerializer.Serialize(request),

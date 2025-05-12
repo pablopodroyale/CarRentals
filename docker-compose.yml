@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/azure-sql-edge
+    container_name: sqlserver
+    environment:
+      SA_PASSWORD: "Your_password123"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Developer"
+      MSSQL_AUTHENTICATION_MODE: "SQL"
+    ports:
+      - "1433:1433"
+    networks:
+      - carnetwork
+
+  sqltools:
+    image: mcr.microsoft.com/mssql-tools
+    container_name: sqltools
+    depends_on:
+      - sqlserver
+    stdin_open: true
+    tty: true
+    networks:
+      - carnetwork
+
+  carrentalapi:
+    build:
+      context: .
+      dockerfile: CarRentalApi/Dockerfile
+    depends_on:
+      - sqlserver
+    environment:
+      ASPNETCORE_ENVIRONMENT: Docker
+    ports:
+      - "5000:80"
+    networks:
+      - carnetwork
+
+networks:
+  carnetwork:
