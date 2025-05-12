@@ -3,6 +3,7 @@ using CarRental.Domain;
 using CarRental.Domain.Entities;
 using CarRental.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
+using System.Threading;
 
 namespace CarRental.Infrastructure.Repositories
 {
@@ -13,6 +14,13 @@ namespace CarRental.Infrastructure.Repositories
         public CarRepository(CarRentalDbContext context)
         {
             _context = context;
+        }
+
+        public async Task<IEnumerable<Car>> GetAllAsync(CancellationToken cancellationToken)
+        {
+            return await _context.Cars
+           .Include(c => c.Services) 
+           .ToListAsync(cancellationToken);
         }
 
         public async Task<List<Car>> GetAvailableCars(DateTime start, DateTime end, string type)

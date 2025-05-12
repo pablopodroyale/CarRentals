@@ -1,4 +1,5 @@
 ﻿using CarRental.Application.DTOs.Statistic;
+using CarRental.Shared.DTOs.Statistic;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,10 @@ using System.Threading.Tasks;
 
 namespace CarRental.Application.UseCases.Statistics.Queries
 {
-    public class GetUtilizationPerLocationQuery : IRequest<List<UtilizationByLocationDto>>
+    public class GetUtilizationQuery : IRequest<List<UtilizationDto>>
     {
+        public DateTime? From { get; set; }
+        public DateTime? To { get; set; }
+        public string? Location { get; set; }
     }
 }

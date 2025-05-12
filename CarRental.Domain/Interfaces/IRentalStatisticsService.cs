@@ -4,7 +4,7 @@ namespace CarRental.Domain.Interfaces
 {
     public interface IRentalStatisticsService
     {
-        Task<MostRentedCarTypeDto> GetMostRentedCarTypeAsync();
+        Task<List<MostRentedCarsDto>> GetMostRentedCarsAsync();
         Task<List<UtilizationByLocationDto>> GetUtilizationPerLocationAsync();
     }
 }

@@ -118,6 +118,8 @@ builder.Services.AddScoped<IRentalRepository, RentalRepository>();
 builder.Services.AddScoped<IRentalStatisticsService, RentalStatisticsService>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddScoped<ICarService, CarService>();
+builder.Services.AddScoped<IStatisticsService, StatisticsService>();
+
 builder.Services.AddScoped<IRentalRule, CarAvailabilityRule>();
 builder.Services.AddScoped<IRentalRule, CarServiceConflictRule>();
 builder.Services.AddScoped<IRentalRule, ValidDateRangeRule>();

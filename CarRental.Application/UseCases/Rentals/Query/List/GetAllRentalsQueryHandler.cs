@@ -16,6 +16,6 @@ public class GetAllRentalsQueryHandler : IRequestHandler<GetAllRentalsQuery, Lis
 
     public async Task<List<RentalDto>> Handle(GetAllRentalsQuery request, CancellationToken cancellationToken)
     {
-        return await _rentalService.GetAllAsync(request.CustomerID, request.Role, cancellationToken);
+        return await _rentalService.GetAllAsync(request.CustomerID, request.Role, null, null, null, cancellationToken);
     }
 }

@@ -17,42 +17,49 @@ namespace CarRental.Infrastructure.Repositories
             _context = context;
         }
 
-        public async Task<List<RentalDto>> GetAllAsync(string customerID, string role, CancellationToken cancellationToken)
+        public async Task<List<Rental>> GetAllAsync(
+          string? customerID,
+          string? role,
+          DateTime? from,
+          DateTime? to,
+          string? location,
+          CancellationToken cancellationToken)
         {
             var query = _context.Rentals
-                                 .Include(r => r.Customer)
-                                 .Include(r => r.Car)
-                                 .AsQueryable();
+                                .Include(r => r.Customer)
+                                .Include(r => r.Car)
+                                .AsQueryable();
 
-            if (!string.IsNullOrEmpty(customerID) && role.Equals("User"))
+            if (!string.IsNullOrEmpty(customerID) && role == "User")
             {
                 query = query.Where(r => r.Customer.Email == customerID);
             }
 
-            return await query.Select(r => new RentalDto
+            if (!string.IsNullOrEmpty(location))
             {
-                Id = r.Id,
-                CustomerId = r.Customer.Id.ToString(),
-                FullName = r.Customer.FullName,
-                Address = r.Customer.Address.Street,
-                CarType = r.Car.Type,
-                CarId = r.Car.Id,
-                Model = r.Car.Model,
-                Location = r.Car.Location,
-                StartDate = r.StartDate,
-                EndDate = r.EndDate,
-                IsCanceled = r.IsCanceled
-            }).ToListAsync(cancellationToken);
+                query = query.Where(r => r.Car.Location == location);
+            }
 
+            if (from.HasValue)
+            {
+                query = query.Where(r => r.EndDate >= from.Value);
+            }
+
+            if (to.HasValue)
+            {
+                query = query.Where(r => r.StartDate <= to.Value);
+            }
+
+            return await query.ToListAsync(cancellationToken);
         }
 
         public async Task<List<Rental>> GetByCarIdAsync(Guid carId, CancellationToken cancellationToken)
-            {
-                return await _context.Rentals.Where(x => x.Car.Id == carId)
-                                             .Include(x => x.Car)
-                                             .Include(x => x.Customer)
-                                             .ToListAsync();
-            }
+        {
+            return await _context.Rentals.Where(x => x.Car.Id == carId)
+                                            .Include(x => x.Car)
+                                            .Include(x => x.Customer)
+                                            .ToListAsync();
+        }
 
         public async Task<Rental?> GetByIdAsync(Guid id, CancellationToken cancellationToken)
         {

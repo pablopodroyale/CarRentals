@@ -15,36 +15,42 @@ public class RentalStatisticsService : IRentalStatisticsService
         _cache = cache;
     }
 
-    public async Task<MostRentedCarTypeDto> GetMostRentedCarTypeAsync()
+    public async Task<List<MostRentedCarsDto>> GetMostRentedCarsAsync()
     {
-        return await _cache.GetOrCreateAsync("MostRentedType", async entry =>
+        return await _cache.GetOrCreateAsync("MostRentedTypeList", async entry =>
         {
             entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(10);
 
             var total = await _context.Rentals.CountAsync();
             if (total == 0)
             {
-                return new MostRentedCarTypeDto
-                {
-                    Type = "N/A",
-                    UtilizationPercentage = 0
-                };
+                return new List<MostRentedCarsDto>();
             }
 
-            var top = await _context.Rentals
-                .Join(_context.Cars, r => r.Car.Id, c => c.Id, (r, c) => c.Type)
-                .GroupBy(t => t)
-                .OrderByDescending(g => g.Count())
-                .Select(g => new { Type = g.Key, Count = g.Count() })
-                .FirstOrDefaultAsync();
+            var topGrouped = await _context.Rentals
+                .Join(_context.Cars, r => r.Car.Id, c => c.Id, (r, c) => new {c.Type, c.Model })
+                .GroupBy(type => type)
+                .Select(g => new
+                {
+                    Type = g.Key.Type,
+                    Count = g.Count(),
+                    Model = g.Key.Model,
+                })
+                .OrderByDescending(g => g.Count)
+                .Take(3) 
+                .ToListAsync();
 
-            return new MostRentedCarTypeDto
+            return topGrouped.Select(g => new MostRentedCarsDto
             {
-                Type = top.Type,
-                UtilizationPercentage = Math.Round((double)top.Count / total * 100, 2)
-            };
+                Type = g.Type,
+                UtilizationPercentage = Math.Round((double)g.Count / total * 100, 2),
+                TimesRented = g.Count,
+                Model = g.Model
+                
+            }).ToList();
         });
     }
+
 
     public async Task<List<UtilizationByLocationDto>> GetUtilizationPerLocationAsync()
     {

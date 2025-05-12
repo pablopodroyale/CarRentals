@@ -8,5 +8,10 @@ using System.Threading.Tasks;
 
 namespace CarRental.Application.UseCases.Statistics.Queries
 {
-    public class GetMostRentedCarTypeQuery : IRequest<MostRentedCarTypeDto> { }
+    public class GetMostRentedCarsQuery : IRequest<List<MostRentedCarsDto>>
+    {
+        public DateTime From { get; set; }
+        public DateTime To { get; set; }
+        public string? Location { get; set; }
+    }
 }

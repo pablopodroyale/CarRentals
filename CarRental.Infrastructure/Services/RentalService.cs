@@ -22,9 +22,28 @@ public class RentalService : IRentalService
         _rentalRepository = rentalRepository;
     }
 
+    public async Task<List<RentalDto>> GetAllAsync(string customerID, string? role, DateTime? from, DateTime? to, string? location, CancellationToken cancellationToken)
+    {
+        List<Rental> rentals = await _rentalRepository.GetAllAsync(customerID, role, from, to, location, cancellationToken);
+        return rentals.Select(rental => new RentalDto
+        {
+           CustomerId = rental.Customer.Id.ToString(),
+           CarType = rental.Car.Type,
+           CarId = rental.Car.Id,
+           Model = rental.Car.Model,
+           StartDate = rental.StartDate,
+           EndDate = rental.EndDate,
+           FullName = rental.Customer.FullName,
+           Id = rental.Id,
+           IsCanceled = rental.IsCanceled,
+           Location = rental.Car.Location,
+           Address = rental.Customer.Address.Street
+        }).ToList();
+    }
+
     public Task<List<RentalDto>> GetAllAsync(string customerID, string role, CancellationToken cancellationToken)
     {
-        return _rentalRepository.GetAllAsync(customerID, role, cancellationToken);
+        throw new NotImplementedException();
     }
 
     public async Task<Guid> RegisterRentalAsync(string customerId, string carType, string model, DateTime startDate, DateTime endDate, CancellationToken cancellationToken)
