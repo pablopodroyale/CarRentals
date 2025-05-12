@@ -19,7 +19,7 @@ namespace CarRental.Tests.Functions.Email.Activities
                     { "Smtp:Host", "smtp.gmail.com" },
                     { "Smtp:Port", "587" },
                     { "Smtp:User", "pablopodgaiz@gmail.com" },
-                    { "Smtp:Password", "legyawxpugcjhbuc" }
+                    { "Smtp:Password", "YOUR-API-KEY" }
                      }).Build();
 
             var logger = new Mock<ILogger<SendEmailActivityFunction>>();
