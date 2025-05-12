@@ -45,36 +45,36 @@ namespace CarRental.Infrastructure.Services
 
         public async Task<List<UtilizationDto>> GetUtilizationAsync(DateTime? from, DateTime? to, string? location, CancellationToken ct)
         {
+            // Traer todos los alquileres dentro del rango
             var allRentals = await _rentalRepo.GetAllAsync(null, null, from ?? DateTime.MinValue, to ?? DateTime.MaxValue, location, ct);
 
+            // Traer todos los autos (no solo los alquilados)
+            var allCars = await _carRepository.GetAllAsync(ct);
             if (!string.IsNullOrEmpty(location))
             {
+                allCars = allCars.Where(c => c.Location == location).ToList();
                 allRentals = allRentals.Where(r => r.Car.Location == location).ToList();
             }
 
-            var cars = allRentals
-                .Select(r => r.Car)
-                .Distinct()
-                .ToList();
-
+            // Agrupar por tipo y calcular porcentaje de uso
             var groupedByType = allRentals
                 .Where(r => !r.IsCanceled)
                 .GroupBy(r => r.Car.Type)
                 .Select(g =>
-            {
-                var totalCarsOfType = cars.Count(c => c.Type == g.Key);
-                var rentedCars = g.Select(r => r.Car.Id).Distinct().Count();
-
-                double percentage = totalCarsOfType == 0 ? 0 : (double)rentedCars / totalCarsOfType * 100;
-
-                return new UtilizationDto
                 {
-                    Type = g.Key,
-                    PercentageUsed = Math.Round(percentage, 2)
-                };
-            })
-            .OrderByDescending(u => u.PercentageUsed)
-            .ToList();
+                    var rentedCars = g.Select(r => r.Car.Id).Distinct().Count();
+                    var totalCarsOfType = allCars.Count(c => c.Type == g.Key);
+
+                    double percentage = totalCarsOfType == 0 ? 0 : (double)rentedCars / totalCarsOfType * 100;
+
+                    return new UtilizationDto
+                    {
+                        Type = g.Key,
+                        PercentageUsed = Math.Round(percentage, 2)
+                    };
+                })
+                .OrderByDescending(u => u.PercentageUsed)
+                .ToList();
 
             return groupedByType;
         }

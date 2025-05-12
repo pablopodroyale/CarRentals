@@ -1,48 +1,55 @@
-﻿//using CarRental.Application.DTOs.Statistic;
-//using CarRental.Application.UseCases.Statistics.Queries;
-//using CarRental.Domain.Interfaces;
-//using Moq;
-//using NUnit.Framework;
-//using System.Collections.Generic;
-//using System.Threading;
-//using System.Threading.Tasks;
+﻿using CarRental.Application.UseCases.Statistics.Queries;
+using CarRental.Domain.Interfaces;
+using CarRental.Shared.DTOs.Statistic;
+using Moq;
 
-//namespace CarRental.Tests.UseCases.Statistics
-//{
-//    [TestFixture]
-//    public class StatisticsHandlersTests
-//    {
-//        private Mock<IRentalStatisticsService> _rentalStatisticsServiceMock;
+namespace CarRental.Tests.Application.UseCases.Statistics
+{
+    [TestFixture]
+    public class GetUtilizationQueryHandlerTests
+    {
+        private Mock<IStatisticsService> _statisticsServiceMock;
+        private GetUtilizationQueryHandler _handler;
 
-//        [SetUp]
-//        public void Setup()
-//        {
-//            _rentalStatisticsServiceMock = new Mock<IRentalStatisticsService>();
-//        }
+        [SetUp]
+        public void SetUp()
+        {
+            _statisticsServiceMock = new Mock<IStatisticsService>();
+            _handler = new GetUtilizationQueryHandler(_statisticsServiceMock.Object);
+        }
 
-//        [Test]
-//        public async Task Should_Return_Utilization_By_Location()
-//        {
-//            // Arrange
-//            var handler = new GetUtilizationQueryHandler(_rentalStatisticsServiceMock.Object);
-//            var expected = new List<UtilizationByLocationDto>
-//            {
-//                new UtilizationByLocationDto { Location = "Buenos Aires", Utilization = 55.2 },
-//                new UtilizationByLocationDto { Location = "Córdoba", Utilization = 33.1 }
-//            };
+        [Test]
+        public async Task Should_Return_Correct_Utilization_Percentage_By_Car_Type()
+        {
+            // Arrange
+            var expectedUtilization = new List<UtilizationDto>
+            {
+                new UtilizationDto { Type = "SUV", PercentageUsed = 100.0 },
+                new UtilizationDto { Type = "Sedan", PercentageUsed = 50.0 }
+            };
 
-//            _rentalStatisticsServiceMock.Setup(s => s.GetUtilizationPerLocationAsync())
-//                .ReturnsAsync(expected);
+            _statisticsServiceMock
+                .Setup(s => s.GetUtilizationAsync(
+                    It.IsAny<DateTime?>(),
+                    It.IsAny<DateTime?>(),
+                    It.IsAny<string?>(),
+                    It.IsAny<CancellationToken>()))
+                .ReturnsAsync(expectedUtilization);
 
-//            var query = new GetUtilizationQuery();
+            var query = new GetUtilizationQuery
+            {
+                From = DateTime.UtcNow.AddDays(-7),
+                To = DateTime.UtcNow,
+                Location = "Ezeiza"
+            };
 
-//            // Act
-//            var result = await handler.Handle(query, CancellationToken.None);
+            // Act
+            var result = await _handler.Handle(query, CancellationToken.None);
 
-//            // Assert
-//            Assert.That(result.Count, Is.EqualTo(2));
-//            Assert.That(result.Any(r => r.Location == "Buenos Aires" && r.Utilization == 55.2), Is.True);
-//            Assert.That(result.Any(r => r.Location == "Córdoba" && r.Utilization == 33.1), Is.True);
-//        }
-//    }
-//}
+            // Assert
+            Assert.That(result.Count, Is.EqualTo(2));
+            Assert.That(result.Any(r => r.Type == "SUV" && r.PercentageUsed == 100.0), Is.True);
+            Assert.That(result.Any(r => r.Type == "Sedan" && r.PercentageUsed == 50.0), Is.True);
+        }
+    }
+}

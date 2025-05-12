@@ -13,7 +13,7 @@ public class RegisterRentalIntegrationTests
 {
     private IServiceProvider _sp;
     private CarRentalDbContext _db;
-    private Guid _customerId;
+    private string _customerId;
     private Customer _customer;
     private CustomWebApplicationFactory _factory;
 
@@ -36,7 +36,7 @@ public class RegisterRentalIntegrationTests
                     FullName = "Test User",
                     Address = new Address { Street = "123 Main" }
                 };
-                _customerId = _customer.Id;
+                _customerId = _customer.Email;
 
                 db.Customers.Add(_customer);
 
@@ -70,17 +70,21 @@ public class RegisterRentalIntegrationTests
         var rentalService = sp.GetRequiredService<IRentalService>();
         var useCase = new RegisterRentalUseCase(rentalService);
         CancellationToken cancellationToken = new CancellationToken();
-        var rentalId = await useCase.ExecuteAsync(_customerId, "SUV", "", DateTime.Today, DateTime.Today.AddDays(3), cancellationToken);
+        var rentalId = await useCase.ExecuteAsync(
+            _customerId, "SUV", "Toyota RAV4", DateTime.Today.AddDays(1), DateTime.Today.AddDays(3), cancellationToken);
         var rental = await db.Rentals.Include(r => r.Customer).FirstOrDefaultAsync(r => r.Id == rentalId);
 
         Assert.That(rental, Is.Not.Null);
-        Assert.That(rental.Customer.Id, Is.EqualTo(_customerId));
+        Assert.That(rental.Customer.Email, Is.EqualTo(_customerId));
     }
 
     [Test]
     public async Task Should_Throw_When_CarAlreadyReserved()
     {
-        // Arrange - inicializar todo desde 0
+        // Arrange
+        var customerId = Guid.NewGuid();
+        var carId = Guid.NewGuid();
+
         var factory = new CustomWebApplicationFactory
         {
             SeedAction = sp =>
@@ -91,7 +95,7 @@ public class RegisterRentalIntegrationTests
 
                 var customer = new Customer
                 {
-                    Id = Guid.NewGuid(),
+                    Id = customerId,
                     Email = identityUser.Email,
                     ApplicationUserId = identityUser.Id,
                     FullName = "Test User",
@@ -100,7 +104,7 @@ public class RegisterRentalIntegrationTests
 
                 var car = new Car
                 {
-                    Id = Guid.NewGuid(),
+                    Id = carId,
                     Type = "SUV",
                     Model = "Toyota RAV4",
                     Location = "Buenos Aires",
@@ -109,26 +113,26 @@ public class RegisterRentalIntegrationTests
 
                 db.Customers.Add(customer);
                 db.Cars.Add(car);
+
+                // Registrar un alquiler previo para bloquear el auto
                 db.Rentals.Add(new Rental(customer, car, DateTime.Today, DateTime.Today.AddDays(3)));
 
                 db.SaveChanges();
             }
         };
 
-        var client = factory.CreateUserClient();
-
         using var scope = factory.Services.CreateScope();
         var sp = scope.ServiceProvider;
 
         var rentalService = sp.GetRequiredService<IRentalService>();
-        var customer = await sp.GetRequiredService<CarRentalDbContext>().Customers.FirstAsync();
         var useCase = new RegisterRentalUseCase(rentalService);
         var cancellationToken = new CancellationToken();
 
         // Act & Assert
         var ex = Assert.ThrowsAsync<NoCarAvailableException>(() =>
-            useCase.ExecuteAsync(customer.Email, "SUV", "", DateTime.Today, DateTime.Today.AddDays(2), cancellationToken));
+            useCase.ExecuteAsync("user@test.com", "SUV", "Toyota RAV4", DateTime.Today.AddDays(1), DateTime.Today.AddDays(2), cancellationToken));
 
         Assert.That(ex!.Message, Is.EqualTo("No car available for the selected dates."));
     }
+
 }

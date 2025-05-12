@@ -60,3 +60,5 @@ nunit-*.xml
 *.v2
 *.vsidx
 /.vs
+/coverage-report
+/TestReport

@@ -5,10 +5,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Moq;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
-
+using CarRental.Domain.Interfaces;
 public class CustomWebApplicationFactory : WebApplicationFactory<Program>
 {
     public Action<IServiceProvider>? SeedAction { get; set; }
@@ -18,9 +19,9 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
         builder.UseEnvironment("Testing");
         builder.ConfigureServices(services =>
         {
+            // Reemplazar DbContext con InMemory
             var descriptor = services.SingleOrDefault(
                 d => d.ServiceType == typeof(DbContextOptions<CarRentalDbContext>));
-
             if (descriptor != null)
                 services.Remove(descriptor);
 
@@ -28,6 +29,20 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
             {
                 options.UseInMemoryDatabase("TestDb");
             });
+
+            // 🔁 Remover implementación real de IEmailDispatcher
+            var emailDispatcherDescriptor = services.SingleOrDefault(
+                d => d.ServiceType == typeof(IEmailDispatcherService));
+            if (emailDispatcherDescriptor != null)
+                services.Remove(emailDispatcherDescriptor);
+
+            // ✅ Mockear IEmailDispatcher
+            var mockEmailDispatcher = new Mock<IEmailDispatcherService>();
+            mockEmailDispatcher
+                .Setup(m => m.SendConfirmationEmailAsync(
+                    It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
+                .Returns(Task.CompletedTask);
+            services.AddSingleton(mockEmailDispatcher.Object);
 
             var sp = services.BuildServiceProvider();
 
@@ -39,24 +54,23 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
             var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
             var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
-            // Crear roles si no existen
+            // Crear roles
             if (!roleManager.RoleExistsAsync("User").Result)
                 roleManager.CreateAsync(new IdentityRole("User")).Wait();
 
             if (!roleManager.RoleExistsAsync("Admin").Result)
                 roleManager.CreateAsync(new IdentityRole("Admin")).Wait();
 
-            // Crear usuario con rol User
+            // Crear usuario User
             var user = new ApplicationUser
             {
                 UserName = "user@test.com",
                 Email = "user@test.com"
             };
-
             userManager.CreateAsync(user, "Password123!").Wait();
             userManager.AddToRoleAsync(user, "User").Wait();
 
-            // Crear usuario con rol Admin
+            // Crear usuario Admin
             var admin = new ApplicationUser
             {
                 UserName = "admin@test.com",
@@ -65,6 +79,7 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
             userManager.CreateAsync(admin, "Password123!").Wait();
             userManager.AddToRoleAsync(admin, "Admin").Wait();
 
+            // Ejecutar SeedAction personalizada si existe
             SeedAction?.Invoke(scope.ServiceProvider);
         });
     }
@@ -89,7 +104,6 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
         return client;
     }
 
-    // Accesos rápidos
     public HttpClient CreateUserClient() =>
         CreateAuthenticatedClient("user@test.com", "Password123!");
 

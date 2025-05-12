@@ -20,8 +20,9 @@ namespace CarRental.Tests.Application.UseCases.Rentals
         {
             var command = new RegisterRentalCommand
             {
-                CustomerId = "user@test.com",
+                CustomerId = "", // ← Aquí está el fix
                 CarType = "SUV",
+                Model = "Toyota RAV4", // Incluí esto si es obligatorio en el validator
                 StartDate = DateTime.Today,
                 EndDate = DateTime.Today.AddDays(2)
             };
@@ -31,6 +32,7 @@ namespace CarRental.Tests.Application.UseCases.Rentals
             Assert.IsFalse(result.IsValid);
             Assert.That(result.Errors.Any(e => e.PropertyName == nameof(command.CustomerId)));
         }
+
 
         [Test]
         public void Should_Fail_When_CarType_Is_Empty()

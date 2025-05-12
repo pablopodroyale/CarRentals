@@ -49,10 +49,11 @@ public class RentalService : IRentalService
     public async Task<Guid> RegisterRentalAsync(string customerId, string carType, string model, DateTime startDate, DateTime endDate, CancellationToken cancellationToken)
     {
         var customer = await _customerRepository.GetAsync(customerId);
-        _context.Attach(customer);
+        
         if (customer == null)
             throw new KeyNotFoundException("Customer not found");
 
+        _context.Attach(customer);
         // Buscar autos que no tengan reservas conflictivas y no estén en servicio
         var candidateCars = await _context.Cars
             .Include(c => c.Services)

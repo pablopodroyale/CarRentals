@@ -1,4 +1,5 @@
-﻿using CarRental.Domain.Entities;
+﻿using CarRental.Application.UseCases.Rentals.Commands.RegisterRental;
+using CarRental.Domain.Entities;
 using CarRental.Infrastructure.Identity;
 using CarRental.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Identity;
@@ -24,19 +25,20 @@ namespace CarRental.Tests.Integration.API.Rental
         [Test]
         public async Task Should_RegisterRental_Through_Api()
         {
-            var customerId = Guid.NewGuid();
-            var carId = Guid.NewGuid();
+            Guid customerId = Guid.NewGuid();
+            string email = "user@test.com";
+            Guid carId = Guid.NewGuid();
 
             _factory.SeedAction = sp =>
             {
                 var db = sp.GetRequiredService<CarRentalDbContext>();
                 var userManager = sp.GetRequiredService<UserManager<ApplicationUser>>();
-                var identityUser = userManager.FindByEmailAsync("user@test.com").Result;
+                var identityUser = userManager.FindByEmailAsync(email).Result;
 
                 db.Customers.Add(new Domain.Entities.Customer
                 {
                     Id = customerId,
-                    Email = "user@test.com",
+                    Email = email,
                     ApplicationUserId = identityUser.Id,
                     FullName = "Test User",
                     Address = new Address { Street = "Av. Siempre Viva" }
@@ -55,12 +57,13 @@ namespace CarRental.Tests.Integration.API.Rental
 
             _client = _factory.CreateUserClient();
 
-            var command = new
-            {
-                customerId,
-                carType = "SUV",
-                startDate = DateTime.Today,
-                endDate = DateTime.Today.AddDays(3)
+          var command = new RegisterRentalCommand
+          {
+                CustomerId = email,
+                CarType = "SUV",
+                Model = "Toyota",
+                StartDate = DateTime.Today.AddDays(1),
+                EndDate = DateTime.Today.AddDays(3)
             };
 
             var content = new StringContent(JsonSerializer.Serialize(command), Encoding.UTF8, "application/json");
@@ -127,7 +130,7 @@ namespace CarRental.Tests.Integration.API.Rental
         }
 
         [Test]
-        public async Task Should_CancelRental_Through_Api()
+        public async Task Should_Register_And_Cancel_Rental_Through_Api()
         {
             var customerId = Guid.NewGuid();
             var carId = Guid.NewGuid();
@@ -159,10 +162,11 @@ namespace CarRental.Tests.Integration.API.Rental
 
             var command = new
             {
-                customerId,
-                carType = "SUV",
-                startDate = DateTime.Today,
-                endDate = DateTime.Today.AddDays(3)
+                CustomerId = "admin@test.com", 
+                CarType = "SUV",
+                Model = "Toyota", 
+                StartDate = DateTime.Today.AddDays(1),
+                EndDate = DateTime.Today.AddDays(3)
             };
 
             var content = new StringContent(JsonSerializer.Serialize(command), Encoding.UTF8, "application/json");
@@ -170,7 +174,15 @@ namespace CarRental.Tests.Integration.API.Rental
             response.EnsureSuccessStatusCode();
 
             var json = await response.Content.ReadAsStringAsync();
-            Assert.That(json, Does.Contain("rentalId"));
+            using var doc = JsonDocument.Parse(json);
+            var rentalId = doc.RootElement.GetProperty("rentalId").GetGuid();
+
+            // Act: cancelar
+            var cancelResponse = await _client.DeleteAsync($"/api/rentals/{rentalId}");
+
+            // Assert
+            Assert.That(cancelResponse.StatusCode, Is.EqualTo(HttpStatusCode.NoContent));
         }
+
     }
 }
