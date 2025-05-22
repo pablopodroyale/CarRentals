@@ -63,8 +63,9 @@ namespace CarRental.Tests.Integration.API.Rental
                 CarType = "SUV",
                 Model = "Toyota",
                 StartDate = DateTime.Today.AddDays(1),
-                EndDate = DateTime.Today.AddDays(3)
-            };
+                EndDate = DateTime.Today.AddDays(3),
+                Location = "Buenos Aires"
+          };
 
             var content = new StringContent(JsonSerializer.Serialize(command), Encoding.UTF8, "application/json");
 
@@ -81,7 +82,7 @@ namespace CarRental.Tests.Integration.API.Rental
             var customerId = Guid.NewGuid();
             var oldCarId = Guid.NewGuid();
             var newCarId = Guid.NewGuid();
-
+            var location = "Buenos Aires";
             _factory = new CustomWebApplicationFactory
             {
                 SeedAction = sp =>
@@ -102,7 +103,7 @@ namespace CarRental.Tests.Integration.API.Rental
                     var oldCar = new Domain.Entities.Car { Id = oldCarId, Type = "Sedan", Model = "Ford Focus", Location = "Buenos Aires" };
                     var newCar = new Domain.Entities.Car { Id = newCarId, Type = "SUV", Model = "Honda CR-V", Location = "Córdoba" };
 
-                    var rental = new Domain.Entities.Rental(customer, oldCar, DateTime.Today, DateTime.Today.AddDays(2));
+                    var rental = new Domain.Entities.Rental(customer, oldCar, DateTime.Today, DateTime.Today.AddDays(2), location);
                     typeof(Domain.Entities.Rental).GetProperty("Id")!.SetValue(rental, rentalId);
 
                     db.Customers.Add(customer);
@@ -166,7 +167,8 @@ namespace CarRental.Tests.Integration.API.Rental
                 CarType = "SUV",
                 Model = "Toyota", 
                 StartDate = DateTime.Today.AddDays(1),
-                EndDate = DateTime.Today.AddDays(3)
+                EndDate = DateTime.Today.AddDays(3),
+                Location = "Buenos Aires"
             };
 
             var content = new StringContent(JsonSerializer.Serialize(command), Encoding.UTF8, "application/json");

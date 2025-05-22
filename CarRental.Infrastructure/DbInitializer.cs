@@ -28,15 +28,5 @@ public static class DbInitializer
             await userManager.CreateAsync(adminUser, "Admin123!");
             await userManager.AddToRoleAsync(adminUser, "Admin");
         }
-
-        // Normal user
-        var userEmail = "user@carrental.com";
-        var normalUser = await userManager.FindByEmailAsync(userEmail);
-        if (normalUser == null)
-        {
-            normalUser = new ApplicationUser { UserName = userEmail, Email = userEmail };
-            await userManager.CreateAsync(normalUser, "User123!");
-            await userManager.AddToRoleAsync(normalUser, "User");
-        }
     }
 }

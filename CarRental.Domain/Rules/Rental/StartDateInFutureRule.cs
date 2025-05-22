@@ -12,7 +12,7 @@ namespace CarRental.Domain.Rules.Rental
         {
             var today = DateTime.UtcNow;
 
-            if (rental.StartDate.Date < today)
+            if (rental.StartDate.Date < today.Date)
                 throw new BusinessRentalRuleException("Start date cannot be in the past.");
 
             return Task.CompletedTask;

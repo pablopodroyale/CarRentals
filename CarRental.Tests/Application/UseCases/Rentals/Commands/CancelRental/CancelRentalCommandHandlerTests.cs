@@ -22,6 +22,7 @@ namespace CarRental.Tests.Application.UseCases.Rentals.Commands.CancelRental
         [Test]
         public async Task Should_CancelRental_When_RentalExists()
         {
+            string location = "EZE";
             var customer = new Customer
             {
                 Id = Guid.NewGuid(),
@@ -39,10 +40,10 @@ namespace CarRental.Tests.Application.UseCases.Rentals.Commands.CancelRental
                 Id = Guid.NewGuid(),
                 Type = "SUV",
                 Model = "Toyota RAV4",
-                Location = "EZE"
+                Location = location
             };
 
-            var rental = new Rental(customer, car, DateTime.Today, DateTime.Today.AddDays(1));
+            var rental = new Rental(customer, car, DateTime.Today, DateTime.Today.AddDays(1), location);
 
             _mockRepository
                 .Setup(repo => repo.GetByIdAsync(rental.Id, It.IsAny<CancellationToken>()))

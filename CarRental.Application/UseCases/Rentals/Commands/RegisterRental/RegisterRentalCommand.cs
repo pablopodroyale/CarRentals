@@ -14,5 +14,6 @@ namespace CarRental.Application.UseCases.Rentals.Commands.RegisterRental
         public string Model { get; set; }
         public DateTime StartDate { get; init; }
         public DateTime EndDate { get; init; }
+        public string Location { get; init; }
     }
 }

@@ -29,10 +29,10 @@ namespace CarRental.Tests.Functions.Email.Activities
             var config = new ConfigurationBuilder()
                 .AddInMemoryCollection(new Dictionary<string, string>
                 {
-            { "Smtp:Host", smtpHost },
-            { "Smtp:Port", smtpPort },
-            { "Smtp:User", smtpUser },
-            { "Smtp:Password", smtpPassword }
+                    { "Smtp:Host", smtpHost },
+                    { "Smtp:Port", smtpPort },
+                    { "Smtp:User", smtpUser },
+                    { "Smtp:Password", smtpPassword }
                 })
                 .Build();
 

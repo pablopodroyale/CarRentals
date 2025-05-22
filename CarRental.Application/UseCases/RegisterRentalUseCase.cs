@@ -16,9 +16,9 @@ namespace CarRental.Application.UseCases
             _rentalService = rentalService;
         }
 
-        public async Task<Guid> ExecuteAsync(string customerId, string carType, string model, DateTime start, DateTime end, CancellationToken cancellationToken)
+        public async Task<Guid> ExecuteAsync(string customerId, string carType, string model, DateTime start, DateTime end, string location, CancellationToken cancellationToken)
         {
-            return await _rentalService.RegisterRentalAsync(customerId, carType, model, start, end, cancellationToken);
+            return await _rentalService.RegisterRentalAsync(customerId, carType, model, start, end, location, cancellationToken);
         }
     }
 }

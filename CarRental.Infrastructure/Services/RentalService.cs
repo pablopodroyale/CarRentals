@@ -46,7 +46,7 @@ public class RentalService : IRentalService
         throw new NotImplementedException();
     }
 
-    public async Task<Guid> RegisterRentalAsync(string customerId, string carType, string model, DateTime startDate, DateTime endDate, CancellationToken cancellationToken)
+    public async Task<Guid> RegisterRentalAsync(string customerId, string carType, string model, DateTime startDate, DateTime endDate, string location, CancellationToken cancellationToken)
     {
         var customer = await _customerRepository.GetAsync(customerId);
         
@@ -59,19 +59,21 @@ public class RentalService : IRentalService
             .Include(c => c.Services)
             .Where(c =>
                 c.Type == carType &&
+                c.Model == model &&
+                c.Location == location &&
                 !c.Services.Any(s => s.Date >= startDate && s.Date <= endDate) &&
                 !_context.Rentals.Any(r =>
                     r.Car.Id == c.Id &&
                     !r.IsCanceled &&
                     r.EndDate.AddDays(1) >= startDate &&
-                    r.StartDate <= endDate
+                    r.StartDate <= endDate 
                 )
             )
             .ToListAsync();
 
         foreach (var car in candidateCars)
         {
-            var rental = new Rental(customer, car, startDate, endDate);
+            var rental = new Rental(customer, car, startDate, endDate, location);
 
             try
             {
@@ -108,6 +110,7 @@ public class RentalService : IRentalService
                 newCar,
                 newStartDate,
                 newEndDate,
+                rental.Location,
                 rental.IsCanceled
         );
 

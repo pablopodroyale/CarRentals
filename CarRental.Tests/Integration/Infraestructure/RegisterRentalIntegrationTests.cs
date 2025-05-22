@@ -71,7 +71,7 @@ public class RegisterRentalIntegrationTests
         var useCase = new RegisterRentalUseCase(rentalService);
         CancellationToken cancellationToken = new CancellationToken();
         var rentalId = await useCase.ExecuteAsync(
-            _customerId, "SUV", "Toyota RAV4", DateTime.Today.AddDays(1), DateTime.Today.AddDays(3), cancellationToken);
+            _customerId, "SUV", "Toyota RAV4", DateTime.Today.AddDays(1), DateTime.Today.AddDays(3), "Buenos Aires", cancellationToken);
         var rental = await db.Rentals.Include(r => r.Customer).FirstOrDefaultAsync(r => r.Id == rentalId);
 
         Assert.That(rental, Is.Not.Null);
@@ -115,7 +115,7 @@ public class RegisterRentalIntegrationTests
                 db.Cars.Add(car);
 
                 // Registrar un alquiler previo para bloquear el auto
-                db.Rentals.Add(new Rental(customer, car, DateTime.Today, DateTime.Today.AddDays(3)));
+                db.Rentals.Add(new Rental(customer, car, DateTime.Today, DateTime.Today.AddDays(3), "Buenos Aires"));
 
                 db.SaveChanges();
             }
@@ -130,7 +130,7 @@ public class RegisterRentalIntegrationTests
 
         // Act & Assert
         var ex = Assert.ThrowsAsync<NoCarAvailableException>(() =>
-            useCase.ExecuteAsync("user@test.com", "SUV", "Toyota RAV4", DateTime.Today.AddDays(1), DateTime.Today.AddDays(2), cancellationToken));
+            useCase.ExecuteAsync("user@test.com", "SUV", "Toyota RAV4", DateTime.Today.AddDays(1), DateTime.Today.AddDays(2), "Buenos Aires", cancellationToken));
 
         Assert.That(ex!.Message, Is.EqualTo("No car available for the selected dates."));
     }

@@ -29,6 +29,7 @@ namespace CarRental.Application.UseCases.Rentals.Commands.RegisterRental
                 request.Model,
                 request.StartDate,
                 request.EndDate,
+                request.Location,
                 cancellationToken);
 
             var customerDto = await _customerService.GetAsync(request.CustomerId);
