@@ -36,9 +36,9 @@ public class StatisticsApiTests
                 db.Customers.Add(customer);
 
                 db.Rentals.AddRange(
-                    new Rental(customer, car1, DateTime.Today.AddDays(-10), DateTime.Today.AddDays(-8)),
-                    new Rental(customer, car1, DateTime.Today.AddDays(-4), DateTime.Today.AddDays(-1)),
-                    new Rental(customer, car2, DateTime.Today.AddDays(-6), DateTime.Today.AddDays(-3))
+                    new Rental(customer, car1, DateTime.Today.AddDays(-10), DateTime.Today.AddDays(-8), "Buenos Aires"),
+                    new Rental(customer, car1, DateTime.Today.AddDays(-4), DateTime.Today.AddDays(-1), "Buenos Aires"),
+                    new Rental(customer, car2, DateTime.Today.AddDays(-6), DateTime.Today.AddDays(-3), "Córdoba")
                 );
 
                 db.SaveChanges();

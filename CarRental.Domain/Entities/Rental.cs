@@ -8,10 +8,11 @@
         public DateTime StartDate { get; private set; }
         public DateTime EndDate { get; private set; }
         public bool IsCanceled { get; private set; }
+        public string Location { get; set; }
 
-        private Rental() { }
+    private Rental() { }
 
-        public Rental(Customer customer, Car car, DateTime start, DateTime end)
+        public Rental(Customer customer, Car car, DateTime start, DateTime end, string location)
         {
             if (end <= start)
                 throw new ArgumentException("End date must be after start date");
@@ -21,6 +22,7 @@
             Car = car;
             StartDate = start;
             EndDate = end;
+            Location = location;
         }
 
         public void ModifyDates(DateTime newStartDate, DateTime newEndDate)
@@ -46,7 +48,7 @@
             IsCanceled = true;
         }
 
-        public static Rental Rehydrate(Guid id, Customer customer, Car car, DateTime start, DateTime end, bool isCanceled = false)
+        public static Rental Rehydrate(Guid id, Customer customer, Car car, DateTime start, DateTime end, string location, bool isCanceled = false)
         {
             var rental = new Rental
             {
@@ -55,7 +57,8 @@
                 Car = car,
                 StartDate = start,
                 EndDate = end,
-                IsCanceled = isCanceled
+                IsCanceled = isCanceled,
+                Location = location
             };
 
             return rental;
